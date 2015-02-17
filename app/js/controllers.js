@@ -10,10 +10,14 @@ phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
     $scope.orderProp = 'age';
   }]);
 
+var globallyStored = {};
+
 phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
   function($scope, $routeParams, Phone) {
     $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
       $scope.mainImageUrl = phone.images[0];
+      globallyStored[$routeParams.phoneId] = globallyStored[$routeParams.phoneId] || phone;
+      $scope.user = globallyStored[$routeParams.phoneId].user;
     });
 
     $scope.setImage = function(imageUrl) {
@@ -23,9 +27,9 @@ phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Ph
      $scope.master = {};
 
     $scope.update = function(user) {
-      $scope.master = angular.copy(user);
-      console.log("hi it saved, I think");
-      console.log($scope.master);
+      // $scope.master = angular.copy(user);
+      globallyStored[$routeParams.phoneId].user = angular.copy(user);
+      // console.log($scope.master);
     };
 
     $scope.reset = function() {
