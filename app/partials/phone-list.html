@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
   <div class="row">
     <div class="col-md-2">
       <!--Sidebar content-->
@@ -10,8 +11,34 @@
         <option value="age">Newest</option>
       </select>
 
+    <!-- Adding Contacts-->
+      <!-- Why is toggle not working? -->
+      <button ng-click="isCollapsed = !isCollapsed">Toggle Add</button>    
+      <div collapse="isCollapsed">
+           <h1>Add Item</h1>
+
+          
+          <input type="text" placeholder="Name of Item" ng-model="itemName">
+          <br/>
+
+          <p ng-repeat="item in items">{{item.name}} - {{item.year}}
+          <button onclick="pubMethods.deleteItem(event)" value="{{item.name}}">X</button>
+          </p>
+
+
+         <!--  <button ng-click="addItem()">Add to list</button>-->
+
+
+          <button onclick="pubMethods.addItem()">Add to list</button>
+
+
+      </div><!-- End addItem -->
+
     </div>
+
     <div class="col-md-10">
+
+    
       <!--Body content-->
 
       <ul class="phones">
@@ -20,6 +47,8 @@
           <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
           <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
           <p>{{phone.snippet}}</p>
+          
+          
         </li>
       </ul>
 

@@ -27,3 +27,4 @@ phonecatApp.config(['$routeProvider',
         redirectTo: '/phones'
       });
   }]);
+
