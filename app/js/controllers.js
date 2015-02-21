@@ -2,6 +2,8 @@
 
 /* Controllers */
 
+//--------------------Contacts Mainpage Controller----------------------//
+
 var pubMethods = {};
 
 var phonecatControllers = angular.module('phonecatControllers', []);
@@ -9,20 +11,31 @@ var phonecatControllers = angular.module('phonecatControllers', []);
 
 phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
   function($scope, Phone) {
-    $scope.isCollapsed = false;
+    // $scope.isCollapsed = false;
     $scope.phones = Phone.query();
     $scope.orderProp = 'age';
+  
+    $scope.dummyContacts = ["Tiph", "Kim"]; 
+
+    //var dummyContact = {"Tiphanie", "Kim", "Banana", "Batman"};
+
+    $scope.dummyContacts.push({
+      name: $scope.dummyContacts
+    });
+
+
+    
+   
+
 
    // Add a Item to the list
   $scope.items = [];
-
-
 
   pubMethods.addItem = $scope.addItem = function () {
 
       $scope.items.push({
           name: $scope.itemName,
-          year:2015
+          //year:2015
         });
 
       //phones = $scope.items;
@@ -58,6 +71,9 @@ phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
 
 
 }]);
+
+//--------------------Contact Details Controller----------------------//
+
 
 var globallyStored = {};
 

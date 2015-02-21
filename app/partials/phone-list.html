@@ -38,18 +38,23 @@
       <!--Body content-->
 
       <ul class="phones">
-
+     <!--      the href needs to change -->
         <div ng-repeat="item in items">
-        <a href="#/phones/{{phone.id}}">{{item.name}}</a>
-            <button onclick="pubMethods.deleteItem(event)" value="{{item.name}}">X</button>
+          <a href="#/phones/{{phone.id}}">{{item.name}}</a>
+          <button onclick="pubMethods.deleteItem(event)" value="{{item.name}}">X</button>
         </div>
 
-        <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
+        <li ng-repeat="dummyContact in dummyContacts">
+          <a href="#/phones/{{phone.id}}">{{dummyContacts.name}}</a>
+          <button onclick="pubMethods.deleteItem(event)" value="{{dummyContacts.name}}">X</button>
+        </li>
+
+      <!--   <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
             class="thumbnail phone-listing">
           <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
           <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
           <p>{{phone.snippet}}</p>
-          
+           -->
           
         </li>
       </ul>
