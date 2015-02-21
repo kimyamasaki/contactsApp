@@ -45,8 +45,8 @@
         </div>
 
         <li ng-repeat="dummyContact in dummyContacts">
-          <a href="#/phones/{{phone.id}}">{{dummyContacts.name}}</a>
-          <button onclick="pubMethods.deleteItem(event)" value="{{dummyContacts.name}}">X</button>
+          <a href="#/phones/{{phone.id}}">{{dummyContact.name}}</a>
+          <button onclick="pubMethods.deleteItem(event)" value="{{dummyContact.name}}">X</button>
         </li>
 
       <!--   <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"

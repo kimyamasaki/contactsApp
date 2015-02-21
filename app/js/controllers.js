@@ -15,21 +15,62 @@ phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
     $scope.phones = Phone.query();
     $scope.orderProp = 'age';
   
-    $scope.dummyContacts = ["Tiph", "Kim"]; 
+    // $scope.dummyContacts = ["Tiph", "Kim"]; 
 
     //var dummyContact = {"Tiphanie", "Kim", "Banana", "Batman"};
 
-    $scope.dummyContacts.push({
-      name: $scope.dummyContacts
-    });
+    // for (var i = 0; i < $scope.dummyContacts.length(); i++) {
+    //   console.log($scope.dummyContacts[1]);
+
+    //   $scope.dummyContacts.push({
+    //     name: $scope.dummyContacts[1]
+    //   });
+    // }
 
 
-    
-   
+  // var contacts = {
+  //   c1: {
+  //     question: "Generally, what is your opinion on people?",
+  //     options: ["I can always find the good in everyone!", "I keep my problems to myself.", "Sheesh, I hate people."],
+  //     nextUrl: '#quiz/q2',
+  //   },
+  //   q2: {
+  //     question: "You just finished a long day at work and have arrived home. How do you feel?",
+  //     options: ["That was pretty productive!", "I need to get some sleep.", "Every day is the same damn thing."],
+  //     nextUrl: '#quiz/q3',
+  //   },
+  //   q3: {
+  //     question: "A conversation with your friend got a little heated. The situation is tense. What do you do?",
+  //     options: ["Figure out what's bothering them.", "Tell your friend to snap out of it.", "Tell them to quit being a jerk!"],
+  //     nextUrl: '#quiz/q4',
+  //   },
+  //   q4: {
+  //     question: "You just completed a test but you didn't do too well on it. How are you feeling?",
+  //     options: ["I'll definitely get it next time!", "Eh, I guess I'll have to study more.", "That test was pretty stupid..."],
+  //     nextUrl: '#quiz/q5',
+  //   },
+  //   q5: {
+  //     question: "If you could do anything right now, what would you do?",
+  //     options: ["I want to go on adventure!", "A nap sounds pretty solid at the moment.", "I want to be alone. I don't want to deal with anyone."],
+  //     nextUrl: '#quiz/results',
+  //   }
+  // };
 
 
    // Add a Item to the list
   $scope.items = [];
+
+  var dummyContacts = ["Tiph", "Kim"];
+
+  // items = dummyContacts;
+
+
+  for (var i = 0; i < dummyContacts.length; i++) {
+    $scope.items.push({
+        name: dummyContacts[i]
+    });
+  }
+
 
   pubMethods.addItem = $scope.addItem = function () {
 
@@ -37,6 +78,9 @@ phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
           name: $scope.itemName,
           //year:2015
         });
+
+      dummyContacts.push($scope.itemName);
+      console.log(dummyContacts);
 
       //phones = $scope.items;
 
