@@ -21,14 +21,10 @@
           <input type="text" placeholder="Name of Item" ng-model="itemName">
           <br/>
 
-          <p ng-repeat="item in items">{{item.name}} - {{item.year}}
-          <button onclick="pubMethods.deleteItem(event)" value="{{item.name}}">X</button>
-          </p>
+          
 
 
          <!--  <button ng-click="addItem()">Add to list</button>-->
-
-
           <button onclick="pubMethods.addItem()">Add to list</button>
 
 
@@ -42,6 +38,12 @@
       <!--Body content-->
 
       <ul class="phones">
+
+        <div ng-repeat="item in items">
+        <a href="#/phones/{{phone.id}}">{{item.name}}</a>
+            <button onclick="pubMethods.deleteItem(event)" value="{{item.name}}">X</button>
+        </div>
+
         <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
             class="thumbnail phone-listing">
           <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>

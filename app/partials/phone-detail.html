@@ -123,13 +123,13 @@
 
  <div>
   <form novalidate class="css-form">
-    Name: <input type="text" ng-model="user.name" required /><br />
-    Mobile: <input type="text" ng-model="user.mobile" required /><br />
-    E-mail: <input type="email" ng-model="user.email" /><br />
-    IM: <input type="text" ng-model="user.im" /><br />
+    Name: <input type="text" ng-model="user.name" ng-blur="update(user)" required /><br />
+    Mobile: <input type="text" ng-model="user.mobile" ng-blur="update(user)" required /><br />
+    E-mail: <input type="email" ng-model="user.email" ng-blur="update(user)" /><br />
+    IM: <input type="text" ng-model="user.im" ng-blur="update(user)" /><br />
     
-    <input type="button" ng-click="reset()" value="Reset" />
-    <input type="submit" ng-click="update(user)" value="Save" />
+    
+<!--   <input type="submit" ng-click="update(user)" value="Save" /> -->
   </form>
 </div>
 
