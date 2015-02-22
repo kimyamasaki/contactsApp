@@ -7,84 +7,98 @@ module.service('ContactService', function () {
     //contacts array to hold list of all contacts
     var contacts = [{
         id: 0,
+        'photo': 'photoG.png',
         'name': 'Ari Loreno',
         'email': 'kari.loreno@gmail.com',
         'phone': '604-345-4321',
     },
     {
         id: 1,
+        'photo': 'photoR.png',
         'name': 'Baily Brana',
         'email': 'baily@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 2,
+        'photo': 'photoB.png',
         'name': 'Bjruson Bard',
         'email': 'bb345@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 3,
+        'photo': 'photoR.png',
         'name': 'Bob Marley',
         'email': 'bob.marley@gmail.com',
         'phone': '653-235-4321',
     },
     {
         id: 4,
+        'photo': 'photoG.png',
         'name': 'Diana Manny',
         'email': 'diana@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 5,
+        'photo': 'photoR.png',
         'name': 'Frank Sinatra',
         'email': 'frankieg@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 6,
+        'photo': 'photoR.png',
         'name': 'Freddie Mercury',
         'email': 'freddie.mercury@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 7,
+        'photo': 'photoG.png',
         'name': 'Kirra',
         'email': 'kir@gmail.com',
         'phone': '253-235-4321',
     },
     {
         id: 8,
+        'photo': 'photoG.png',
         'name': 'Korna Stuart',
         'email': 'korn@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 9,
+        'photo': 'photoB.png',
         'name': 'Larry Little',
         'email': 'little@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 10,
+        'photo': 'photoG.png',
         'name': 'Lassie Thedog',
         'email': 'lassie@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 11,
+        'photo': 'photoB.png',
         'name': 'Loco Roco',
         'email': 'lr@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 12,
+        'photo': 'photoB.png',
         'name': 'Sandy',
         'email': 'sandy@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 13,
+        'photo': 'photoG.png',
         'name': 'Sanna Bailey',
         'email': 'sanna@gmail.com',
         'phone': '233-653-4321',
@@ -92,42 +106,49 @@ module.service('ContactService', function () {
    
     {
         id: 14,
+        'photo': 'photoB.png',
         'name': 'Sherri Bailey',
         'email': 'sherri@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 15,
+        'photo': 'photoB.png',
         'name': 'Tany Ta',
         'email': 'tand@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 16,
+        'photo': 'photoG.png',
         'name': 'Teo Lorus',
         'email': 'teonlor@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 17,
+        'photo': 'photoR.png',
         'name': 'Takavlov Dog',
         'email': 'dog@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 19,
+        'photo': 'photoB.png',
         'name': 'Vael Aina',
         'email': 'aina@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 20,
+        'photo': 'photoR.png',
         'name': 'Wann Bard',
         'email': 'bb345@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 21,
+        'photo': 'photoG.png',
         'name': 'Waldo Maslo',
         'email': 'wl@gmail.com',
         'phone': '233-653-4321',
@@ -182,11 +203,20 @@ module.service('ContactService', function () {
 
 module.controller('ContactController', function ($scope, ContactService) {
     $scope.hideShow = false;
+    $scope.contactsHideShow = true;
+    $scope.hs = false;
     $scope.contacts = ContactService.list();
+
+    $scope.cancel = function () {
+        $scope.hideShow = false;
+        $scope.contactsHideShow = true;
+    }
 
     $scope.saveContact = function () {
         ContactService.save($scope.newcontact);
         $scope.newcontact = {};
+        $scope.hideShow = false;
+        $scope.contactsHideShow = true;
     }
 
 
@@ -199,5 +229,7 @@ module.controller('ContactController', function ($scope, ContactService) {
 
     $scope.edit = function (id) {
         $scope.newcontact = angular.copy(ContactService.get(id));
+        $scope.hideShow = true;
+        $scope.contactsHideShow = false; 
     }
 })
