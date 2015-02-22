@@ -32,9 +32,12 @@
         <input type="text" name="phone" ng-model="newcontact.phone" />
         <br/>
         <input type="hidden" ng-model="newcontact.id" />
-        <input type="button" value="Save" ng-click="saveContact()" class="btn btn-primary" />
+
+        <input type="button" value="Save" onclick="pubMethods.saveContact()"/>
+    
     </form>
     </div>
+    <div ng-show="hideShow">
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -45,17 +48,27 @@
             </tr>
         </thead>
         <tbody>
-             <input type='button' id='hideshow' value='hide/show'>
+            <!-- <a href="" ng-click="reverse=false;order('name', false)">Name</a> -->
             <tr ng-repeat="contact in contacts">
                 <td>{{ contact.name }}</td>
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.phone }}</td>
-                <td> <a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a>
+
+                <td> <a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> | 
+                <a href="javascript:void(0)" ng-click="delete(contact.id)">edit</a> 
+
+
+                <!-- <button onclick="pubMethods.deleteContacts(event) value="{{contact.id}}">delete</button> -->
+
 
                 </td>
             </tr>
         </tbody>
     </table>
+    </div>
+
+    <a href ng-click="hideShow = !hideShow" class="btn btn-primary btn-lg">Toggle Hide/Show</a>
+             
 </div>
   
   
