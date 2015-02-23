@@ -4,6 +4,25 @@ body {
   padding-top: 20px;
 }
 
+#scrollbar{
+  position:fixed;
+  top:0;
+  right: -30px;
+  width:35px;
+  height:100%;
+  background-color:blue;
+  cursor:pointer;
+  z-index: 10;
+  /*right:*/
+}
+
+
+
+
+
+
+
+
 
 .phone-images {
   background-color: white;
@@ -97,3 +116,7 @@ ul.specs dt {
 h1 {
   border-bottom: 1px solid gray;
 }
+
+
+
+
