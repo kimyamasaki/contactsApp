@@ -21,7 +21,30 @@
 <body>
 
 <div id="main">
-<div id="scrollbar"></div>
+  <div id="scrollbar">
+    <ul>
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+      <li>D</li>
+      <li>E</li>
+      <li>F</li>
+      <li>G</li>
+      <li>H</li>
+      <li>I</li>
+      <li>J</li>
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+      <li>D</li>
+      <li>E</li>
+      <li>F</li>
+      <li>G</li>
+      <li>H</li>
+      <li>I</li>
+      <li>J</li>
+    </ul>
+  </div>
   <div ng-app="contactsApp" ng-controller="ContactController">
     
 
@@ -60,7 +83,7 @@
           </thead>
           <tbody>
               
-              <tr ng-repeat="contact in contacts">
+              <tr ng-repeat="contact in contacts" id="contact-{{contact.id}}">
                   <td><img ng-src='img/{{ contact.photo }}' /></td>
                   <td>{{ contact.name }}</td>
                 
