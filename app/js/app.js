@@ -19,10 +19,18 @@ window.onload = function() {
   // })
 
 	var main = new Hammer(document.getElementById("main"));
+  var scrollbar = new Hammer(document.getElementById("scrollbar"));
 
+
+  // Summon thy gracious side bar
 	Hammer(document.getElementById("main")).on("swipe", function() {
       console.log("hello");
       $('#scrollbar').animate({right: "0"}, 500)  
+  });
+
+  // Hide side bar after a delay
+  Hammer(document.getElementById("scrollbar")).on("panend", function() {
+      $('#scrollbar').delay(2000).animate({right: "-50"}, 500);  
   });
 
 
@@ -31,7 +39,6 @@ window.onload = function() {
   // });
   
   
-  var scrollbar = new Hammer(document.getElementById("scrollbar"));
   var scrollVal = 0;
   var mainHeight = $('#main').height();
   var scrollbarHeight = $('#scrollbar').height();
@@ -52,22 +59,3 @@ window.onload = function() {
       $('html, body').animate({ scrollTop: scrollVal * coeff }, { duration: 10, easing: 'swing'});
   });
 };
-
-
-$.fn.scrollTo = function( target, options, callback ){
-  if(typeof options == 'function' && arguments.length == 2){ callback = options; options = target; }
-  var settings = $.extend({
-    scrollTarget  : target,
-    offsetTop     : 50,
-    duration      : 500,
-    easing        : 'swing'
-  }, options);
-  return this.each(function(){
-    var scrollPane = $(this);
-    var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
-    var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
-    scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
-      if (typeof callback == 'function') { callback.call(this); }
-    });
-  });
-}
