@@ -58,4 +58,62 @@ window.onload = function() {
 
       $('html, body').animate({ scrollTop: scrollVal * coeff }, { duration: 10, easing: 'swing'});
   });
+
+
+
+
+
+  // function wipeStatus(span, dir, result)
+  // {
+  //   $("#" + span + "Result").html("Wiped " + dir + ", speed " + result.speed + ", X " + result.x + ", Y " + result.y);
+  // }
+
+  // function wipeMove(span, result)
+  // {
+  //   $("#" + span + "Result").html("X " + result.curX + ", Y " + result.curY);
+  // }
+
+  // $("#main").wipetouch(
+  // {
+
+  //   wipeLeft: function(result) { wipeStatus("basic", "LEFT", result); },
+  //   wipeRight: function(result) { wipeStatus("basic", "RIGHT", result); },
+  //   wipeUp: function(result) { wipeStatus("basic", "UP", result); },
+  //   wipeDown: function(result) { wipeStatus("basic", "DOWN", result); },
+  //   wipeMove: function(result) { wipeMove("basic", result); }
+  // });
+
+        // $("#AnotherDemo").wipetouch(
+        // {
+        //   allowDiagonal: true,
+        //   tapToClick: true,
+        //   wipeLeft: function(result) { wipeStatus("another", "LEFT", result); },
+        //   wipeRight: function(result) { wipeStatus("another", "RIGHT", result); },
+        //   wipeUp: function(result) { wipeStatus("another", "UP", result); },
+        //   wipeDown: function(result) { wipeStatus("another", "DOWN", result); },
+        //   wipeUpLeft: function(result) { wipeStatus("another", "UP LEFT", result); },
+        //   wipeUpRight: function(result) { wipeStatus("another", "UP RIGHT", result); },
+        //   wipeDownLeft: function(result) { wipeStatus("another", "DOWN LEFT", result); },
+        //   wipeDownRight: function(result) { wipeStatus("another", "DOWN RIGHT", result); },
+        //   wipeMove: function(result) { wipeMove("another", result); }
+        // });
+
+        // $("#AnotherDemo").click(function() { $("#anotherResult").html("You clicked the 'Another demo area'! "); })
+
 };
+
+
+// $(document).wipetouch({
+//   tapToClick: true, // if user taps the screen, triggers a click event
+//   wipeLeft: function(result) { 
+//     console.log("sdfds");
+//     }// do something when user wipes to the left },
+//   wipeRight: function(result) { 
+//     console.log("weewew");
+//     }// do something when user wipes to the right }
+// });
+
+var a = document.createElement('a'); a.innerHTML = "DOWNLOAD ME"; document.body.appendChild(a);
+
+a.href= 'video link'
+
