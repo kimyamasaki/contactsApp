@@ -61,59 +61,74 @@ window.onload = function() {
 
 
 
+  // Greensock spinner tutorial link: http://codepen.io/GreenSock/pen/gnoDc
+  var content = document.getElementById("main");
+  var knob = document.getElementById("knob");
+  var maxScroll = content.scrollHeight - content.offsetHeight;
+  var needsRotationUpdate = false;
+  var sections = 9;
 
+  //when the user drags the knob, we must update the scroll position. We're using the special scrollProxy object of Draggable because it allows us to overscroll (normal browser behavior won't allow it to scroll past the top/bottom). 
+  function onRotateKnob() {
+    dragContent.scrollProxy.top(maxScroll * dragKnob.rotation / -360);
+    needsRotationUpdate = false;
+  }
 
-  // function wipeStatus(span, dir, result)
-  // {
-  //   $("#" + span + "Result").html("Wiped " + dir + ", speed " + result.speed + ", X " + result.x + ", Y " + result.y);
-  // }
+  //this method updates the knob rotation, syncing it to wherever the content's scroll position is
+  function updateRotation() {
+    TweenMax.set(knob, {rotation:360 * (content.scrollTop / maxScroll)});
+    needsRotationUpdate = false;
+  }
 
-  // function wipeMove(span, result)
-  // {
-  //   $("#" + span + "Result").html("X " + result.curX + ", Y " + result.curY);
-  // }
+  //if the user flicks/spins/drags with momentum, a tween is created, but if the user interacts again before the tween is done, we must kill that tweens (so as not to fight with the user). This method kills any tweens of the knob or the content's scrollProxy.
+  function killTweens() {
+    TweenLite.killTweensOf([knob, dragContent.scrollProxy]);
+  }
+  content.addEventListener("mousewheel", killTweens);
+  content.addEventListener("DOMMouseScroll", killTweens);
 
-  // $("#main").wipetouch(
-  // {
+  //whenever the content gets scrolled (like by using the mousewheel or dragging the content), we simply set a flag indicating we need to update the knob's rotation. We use a "tick" handler later to actually trigger the update because that optimizes performance since ticks happen on requestAnimationFrame and we want to avoid thrashing
+  content.addEventListener("scroll", function() {
+    needsRotationUpdate = true;
+  });
+  TweenLite.ticker.addEventListener("tick", function() {
+    if (needsRotationUpdate) {
+      updateRotation();
+    }
+  });
 
-  //   wipeLeft: function(result) { wipeStatus("basic", "LEFT", result); },
-  //   wipeRight: function(result) { wipeStatus("basic", "RIGHT", result); },
-  //   wipeUp: function(result) { wipeStatus("basic", "UP", result); },
-  //   wipeDown: function(result) { wipeStatus("basic", "DOWN", result); },
-  //   wipeMove: function(result) { wipeMove("basic", result); }
-  // });
+  //create the knob Draggable
+  Draggable.create(knob, {
+    type:"rotation",
+    throwProps:true,
+    edgeResistance:0.85,
+    bounds:{minRotation:0, maxRotation:360},
+    onDragStart:killTweens,
+    onDrag: onRotateKnob,
+    onThrowUpdate: onRotateKnob,
+    snap: function(endValue) {
+      var step = 360 / (sections - 1);
+      return Math.round( endValue / step) * step;
+    }
+  });
 
-        // $("#AnotherDemo").wipetouch(
-        // {
-        //   allowDiagonal: true,
-        //   tapToClick: true,
-        //   wipeLeft: function(result) { wipeStatus("another", "LEFT", result); },
-        //   wipeRight: function(result) { wipeStatus("another", "RIGHT", result); },
-        //   wipeUp: function(result) { wipeStatus("another", "UP", result); },
-        //   wipeDown: function(result) { wipeStatus("another", "DOWN", result); },
-        //   wipeUpLeft: function(result) { wipeStatus("another", "UP LEFT", result); },
-        //   wipeUpRight: function(result) { wipeStatus("another", "UP RIGHT", result); },
-        //   wipeDownLeft: function(result) { wipeStatus("another", "DOWN LEFT", result); },
-        //   wipeDownRight: function(result) { wipeStatus("another", "DOWN RIGHT", result); },
-        //   wipeMove: function(result) { wipeMove("another", result); }
-        // });
+  //create the content Draggable
+  Draggable.create(content, {
+    type:"scrollTop", 
+    edgeResistance:0.5, 
+    throwProps:true,
+    onDragStart: killTweens,
+    snap: function(endValue) {
+      var step = maxScroll / (sections - 1);
+      return Math.round( endValue / step) * -step;
+    }
+  });
 
-        // $("#AnotherDemo").click(function() { $("#anotherResult").html("You clicked the 'Another demo area'! "); })
+  //grab the Draggable instances for the content and the knob, and store them in variables so that we can reference them in other functions very quickly. 
+  var dragContent = Draggable.get(content);
+  var dragKnob = Draggable.get(knob);
+
 
 };
 
-
-// $(document).wipetouch({
-//   tapToClick: true, // if user taps the screen, triggers a click event
-//   wipeLeft: function(result) { 
-//     console.log("sdfds");
-//     }// do something when user wipes to the left },
-//   wipeRight: function(result) { 
-//     console.log("weewew");
-//     }// do something when user wipes to the right }
-// });
-
-var a = document.createElement('a'); a.innerHTML = "DOWNLOAD ME"; document.body.appendChild(a);
-
-a.href= 'video link'
 
