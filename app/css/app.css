@@ -4,16 +4,27 @@ body {
   padding-top: 20px;
 }
 
+header {
+  height: 56px;
+  position: fixed;
+  top: 0;
+  background-color: red;
+  width: 100%;
+}
+
 #main {
   overflow: auto;
   height: 600px;
+  top: 56px;
+  position: fixed;
+  width: 100%;
 }
 
 
 .knobBG {
   position: fixed;
-  bottom: 5px;
-  right: -75px;
+  bottom: -50px;
+  right: -95px;
   z-index: 10;
 }
 
@@ -25,6 +36,47 @@ body {
   border-radius: 30px;
 }
 */
+
+#actionToggle {
+  background-color: black;
+  color: white;
+  height: 65px;
+  width: 65px;
+  border-radius: 35px;
+
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 10;
+}
+
+.actionItems {
+  background-color: black;
+  height: 45px;
+  width: 45px;
+  border-radius: 25px;
+  opacity: 0.7;
+  position: fixed;
+  z-index: 10;
+  display: none;
+}
+
+#actionPhone {
+  bottom: 125px;
+  right: 35px;
+}
+
+#actionText {
+  bottom: 80px;
+  right: 100px;
+}
+
+#actionOther {
+  bottom: 10px;
+  right: 130px;
+}
+
+
 #scrollbar{
   position:fixed;
   top:0;
@@ -36,7 +88,6 @@ body {
   z-index: 10;
   overflow-y: scroll;
   overflow-x: hidden;
-  /*right:*/
 }
 
 
@@ -50,7 +101,7 @@ body {
 }
 
 li:active {
-  background-color: red;
+  background-color: #ddd;
 }
 
 
@@ -70,38 +121,15 @@ li:active {
   padding-right: 20px;
 }
 
-
-
-
-
-/* OLD CODE */
-
-.phone-images {
-  background-color: white;
-  width: 450px;
-  height: 450px;
-  overflow: hidden;
-  position: relative;
-  float: left;
+#addButton {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 50;
 }
 
-.phones {
-  list-style: none;
-}
 
-.thumb {
-  float: left;
-  margin: -0.5em 1em 1.5em 0;
-  padding-bottom: 1em;
-  height: 100px;
-  width: 100px;
-}
 
-.phones li {
-  clear: both;
-  height: 115px;
-  padding-top: 15px;
-}
 
 /** Detail View **/
 img.phone {

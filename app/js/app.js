@@ -19,6 +19,7 @@ window.onload = function() {
   // })
 
 	var main = new Hammer(document.getElementById("main"));
+  var actionToggle = new Hammer(document.getElementById("actionToggle"));
   var scrollbar = new Hammer(document.getElementById("scrollbar"));
 
 
@@ -67,7 +68,16 @@ window.onload = function() {
   // var sections = 9;
 
 
-  $('.knob-dyn').knob();
+
+// $(rootElement).hammer({domEvents:true}).on("press",".elementSelector",callback);
+
+
+  actionToggle.on("press", function() {
+    $("#actionPhone").toggle('fast');
+    $("#actionText").toggle('fast');
+    $("#actionOther").toggle('fast');
+  });
+
 
   $(".knob").knob({
       change : function (value) {
@@ -92,41 +102,41 @@ window.onload = function() {
       /*format : function (value) {
           return value + '%';
       },*/
-      draw : function () {
+      // draw : function () {
 
-          // "tron" case
-          if(this.$.data('skin') == 'tron') {
+      //     // "tron" case
+      //     if(this.$.data('skin') == 'tron') {
 
-              this.cursorExt = 0.3;
+      //         this.cursorExt = 0.3;
 
-              var a = this.arc(this.cv)  // Arc
-                  , pa                   // Previous arc
-                  , r = 1;
+      //         var a = this.arc(this.cv)  // Arc
+      //             , pa                   // Previous arc
+      //             , r = 1;
 
-              this.g.lineWidth = this.lineWidth;
+      //         this.g.lineWidth = this.lineWidth;
 
-              if (this.o.displayPrevious) {
-                  pa = this.arc(this.v);
-                  this.g.beginPath();
-                  this.g.strokeStyle = this.pColor;
-                  this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
-                  this.g.stroke();
-              }
+      //         if (this.o.displayPrevious) {
+      //             pa = this.arc(this.v);
+      //             this.g.beginPath();
+      //             this.g.strokeStyle = this.pColor;
+      //             this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+      //             this.g.stroke();
+      //         }
 
-              this.g.beginPath();
-              this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
-              this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
-              this.g.stroke();
+      //         this.g.beginPath();
+      //         this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
+      //         this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+      //         this.g.stroke();
 
-              this.g.lineWidth = 2;
-              this.g.beginPath();
-              this.g.strokeStyle = this.o.fgColor;
-              this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
-              this.g.stroke();
+      //         this.g.lineWidth = 2;
+      //         this.g.beginPath();
+      //         this.g.strokeStyle = this.o.fgColor;
+      //         this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+      //         this.g.stroke();
 
-              return false;
-          }
-      }
+      //         return false;
+      //     }
+      // }
   });
 
 

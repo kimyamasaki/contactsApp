@@ -155,6 +155,9 @@ module.service('ContactService', function () {
     }
     ];
     
+
+    console.log(contacts[0]);
+
     //save method create a new contact if not already exists
     //else update the existing object
     this.save = function (contact) {

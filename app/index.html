@@ -24,26 +24,30 @@
 <body>
 
 
-
-<!-- <div id="knobBG">
-  <div id="knob"></div>
-</div> -->
+<header>
+  <h1>Contacts</h1>
+</header>
 
 
 <div class="knobBG">
     <!-- <input type="text" id="scrollknob" class="knob" data-width="100" data-cursor=true value="0"> -->
     <input id="scrollknob" class="knob" 
-        data-angleOffset="-100" 
-        data-angleArc="110" 
+        data-angleOffset="-95" 
+        data-angleArc="90" 
         data-fgColor="#66EE66" 
         data-rotation="clockwise" 
         value="35" 
-        data-thickness=".1" 
-        data-width="280" 
+        data-thickness=".08" 
+        data-width="250" 
         data-linecap="round" 
-        data-displayInput="false">
+        data-displayInput="false"
+        data-cursor="true">
 </div>
 
+<div id="actionToggle">...</div>
+<div id="actionPhone" class="actionItems">...</div>
+<div id="actionText" class="actionItems">...</div>
+<div id="actionOther" class="actionItems">...</div>
 
       
 <div id="main">
@@ -97,7 +101,7 @@
 
     
     <div ng-show="contactsHideShow">
-      <a href ng-click="hideShow = !hideShow;contactsHideShow=!contactsHideShow" class="btn btn-primary" >Add Contact</a>
+      <a href ng-click="hideShow = !hideShow;contactsHideShow=!contactsHideShow" id="addButton" class="btn btn-primary" >+</a>
 
       <ul id="people">
           <li ng-repeat="contact in contacts" id="contact-{{contact.id}}">
