@@ -64,7 +64,7 @@ window.onload = function() {
       // }
       // });
 
-      
+
       //console.log(scrollVal);
 
       // var scrollBool = true;
@@ -86,7 +86,7 @@ window.onload = function() {
   // var needsRotationUpdate = false;
   // var sections = 9;
 
-
+//have an event
 
 // $(rootElement).hammer({domEvents:true}).on("press",".elementSelector",callback);
 
@@ -97,6 +97,16 @@ window.onload = function() {
     $("#actionOther").toggle('fast');
   });
 
+  // actionPhone.on("release", function(){
+  //   document.body..add('light');
+  // });
+
+  //Scrolling 
+  $("#main").scroll(function(){
+    $(".knob").val($('#main').scrollTop()/10);
+    $(".knob").trigger("change");
+    //console.log("scrolling");
+ });
 
   $(".knob").knob({
       change : function (value) {
@@ -109,7 +119,7 @@ window.onload = function() {
 
 
           content.scrollTop = increments;
-          console.log(increments);
+          //console.log(increments);
           //$('#main').scrollTop(increments);
 
 
@@ -119,7 +129,7 @@ window.onload = function() {
       },
       release : function (value) {
           //console.log(this.$.attr('value'));
-          console.log("release : " + value);
+          //console.log("release : " + value);
       },
       cancel : function () {
           console.log("cancel : ", this);
