@@ -15,7 +15,7 @@ module.service('ContactService', function () {
     {
         id: 1,
         'photo': 'photoR.png',
-        'name': 'Baily Brana',
+        'name': 'Zaily Brana',
         'email': 'baily@gmail.com',
         'phone': '233-653-4321',
     },
@@ -153,10 +153,11 @@ module.service('ContactService', function () {
         'email': 'wl@gmail.com',
         'phone': '233-653-4321',
     }
+
     ];
     
 
-    console.log(contacts[0]);
+    //console.log(contacts[0]);
 
     //save method create a new contact if not already exists
     //else update the existing object
@@ -216,8 +217,18 @@ module.controller('ContactController', function ($scope, ContactService) {
     }
 
     $scope.saveContact = function () {
+        // var a = {photo : "photoR.png"};
+        // //console.log(genericPhoto); 
+        // var b = $scope.newcontact;
+        // //console.log(newContactList);
+        // var c = $.merge(a, b);
+        // console.log(c);
+      
         ContactService.save($scope.newcontact);
+
+        console.log($scope.newcontact);
         $scope.newcontact = {};
+
         $scope.hideShow = false;
         $scope.contactsHideShow = true;
     }

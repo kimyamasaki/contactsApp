@@ -52,10 +52,29 @@ window.onload = function() {
 
   main.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
 
+  var currentScrollValue=0;
+
+  var scrollBool = false;
   // listen to events...
   main.on("panup pandown", function(ev) {
       scrollVal = $('#main').scrollTop();
-      console.log(scrollVal);
+      // $(".knob").knob({
+      // change : function (scrollVal) {
+      
+      // }
+      // });
+
+      
+      //console.log(scrollVal);
+
+      // var scrollBool = true;
+
+      //     if (scrollBool) {
+      //       currentScrollValue = scrollVal/10;
+            
+      //     };
+
+  
 
       // $('html, body').animate({ scrollTop: scrollVal * coeff }, { duration: 10, easing: 'swing'});
   });
@@ -81,16 +100,22 @@ window.onload = function() {
 
   $(".knob").knob({
       change : function (value) {
+
+
+
           console.log("change : " + value);
 
           var increments = (maxScroll / 100) * (value);
 
 
           content.scrollTop = increments;
+          console.log(increments);
+          //$('#main').scrollTop(increments);
 
-          if (value == 100) {
-            console.log("sdfs");
-          }
+
+          // if (value == 100) {
+          //   console.log("sdfs");
+          // }
       },
       release : function (value) {
           //console.log(this.$.attr('value'));

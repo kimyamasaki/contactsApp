@@ -84,10 +84,10 @@
 
 
       <form class="well">
-          <label>Photo</label>
-            <input type="radio" value="photoG.png" name="photo" ng-model="newcontact.photo">Green</input>
-            <input type="radio" value="photoR.png" name="photo" ng-model="newcontact.photo">Red</input>
-            <input type="radio" value="photoB.png" name="photo" ng-model="newcontact.photo">Blue</input>
+          
+            <input type="radio" value="photoR.png" name="photo" ng-model="newcontact.photo" checked>Red</input>
+
+          <img ng-src='img/photoR.png' />
           <label>Name</label>
           <input type="text" name="name" ng-model="newcontact.name" />
           <label>Email</label>
@@ -106,7 +106,8 @@
       
 
       <ul id="people">
-          <li ng-repeat="contact in contacts" id="contact-{{contact.id}}">
+          <li ng-repeat="contact in contacts | orderBy: 'name'" id="contact-{{contact.id}}">
+
             <div class="contactName"><img ng-src='img/{{ contact.photo }}' />{{ contact.name }}</div>
           
             <!-- <td> <a href="javascript:void(0)" ng-click="edit(contact.id)" >edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a> -->
