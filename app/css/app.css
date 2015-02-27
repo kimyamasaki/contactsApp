@@ -123,7 +123,7 @@ li:active {
 
 #addButton {
   position: fixed;
-  top: 50px;
+  top: 12px;
   right: 20px;
   z-index: 50;
 }

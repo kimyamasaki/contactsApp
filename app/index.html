@@ -22,10 +22,12 @@
   <script src="js/controllers.js"></script>
 </head>
 <body>
-
+<div ng-app="contactsApp" ng-controller="ContactController">
 
 <header>
   <h1>Contacts</h1>
+  <a href ng-click="hideShow = !hideShow;contactsHideShow=!contactsHideShow" id="addButton" class="btn btn-primary" >+</a>
+
 </header>
 
 
@@ -75,10 +77,10 @@
       <li>J</li>
     </ul>
   </div>
-  <div ng-app="contactsApp" ng-controller="ContactController">
+  
     
-
     <div ng-show="hideShow">
+
 
 
       <form class="well">
@@ -101,7 +103,7 @@
 
     
     <div ng-show="contactsHideShow">
-      <a href ng-click="hideShow = !hideShow;contactsHideShow=!contactsHideShow" id="addButton" class="btn btn-primary" >+</a>
+      
 
       <ul id="people">
           <li ng-repeat="contact in contacts" id="contact-{{contact.id}}">
