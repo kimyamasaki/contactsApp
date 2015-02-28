@@ -208,7 +208,7 @@ module.service('ContactService', function () {
 module.controller('ContactController', function ($scope, ContactService) {
     $scope.hideShow = false;
     $scope.contactsHideShow = true;
-    $scope.hs = false;
+    // $scope.hs = false;
     $scope.contacts = ContactService.list();
 
     $scope.cancel = function () {
@@ -242,8 +242,20 @@ module.controller('ContactController', function ($scope, ContactService) {
 
 
     $scope.edit = function (id) {
+        document.getElementById("name").readOnly = false;
+        document.getElementById("email").readOnly = false;
+        document.getElementById("phone").readOnly = false;
+
+    }
+
+    $scope.details = function (id) {
         $scope.newcontact = angular.copy(ContactService.get(id));
+        //document.getElementById("photo").checked = true;
+        document.getElementById("name").readOnly = true;
+        document.getElementById("email").readOnly = true;
+        document.getElementById("phone").readOnly = true;
         $scope.hideShow = true;
         $scope.contactsHideShow = false; 
     }
+
 })

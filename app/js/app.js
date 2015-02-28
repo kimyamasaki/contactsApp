@@ -91,11 +91,11 @@ window.onload = function() {
 // $(rootElement).hammer({domEvents:true}).on("press",".elementSelector",callback);
 
 
-  actionToggle.on("press", function() {
-    $("#actionPhone").toggle('fast');
-    $("#actionText").toggle('fast');
-    $("#actionOther").toggle('fast');
-  });
+  // actionToggle.on("press", function() {
+  //   $("#actionPhone").toggle('fast');
+  //   $("#actionText").toggle('fast');
+  //   $("#actionOther").toggle('fast');
+  // });
 
   // actionPhone.on("release", function(){
   //   document.body..add('light');

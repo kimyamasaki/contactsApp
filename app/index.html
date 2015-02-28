@@ -25,11 +25,11 @@
 <div ng-app="contactsApp" ng-controller="ContactController">
 
 <header>
-  <img src="./img/hamburger.png" class="hamburger" />
   <h1>Contacts</h1>
-  <a href ng-click="hideShow = !hideShow;contactsHideShow=!contactsHideShow" id="addButton">
-    <img src="./img/add_btn.png" />
-  </a>
+  <a href ng-click="hideShow = !hideShow;contactsHideShow=!contactsHideShow" id="addButton" class="btn btn-primary" >+</a>
+  <div ng-show="hideShow">
+  <a href="javascript:void(0)" ng-click="edit(contact.id)" id="addButton" class="btn btn-primary">Edit</a>
+  </div>
 </header>
 
 
@@ -40,7 +40,7 @@
         data-angleArc="90" 
         data-fgColor="#66EE66" 
         data-rotation="clockwise" 
-        value="35" 
+        value="0" 
         data-thickness=".08" 
         data-width="250" 
         data-linecap="round" 
@@ -87,19 +87,20 @@
 
       <form class="well">
           
-            <input type="radio" value="photoR.png" name="photo" ng-model="newcontact.photo" checked>Red</input>
+          <input type="radio" id="photo" value="photoR.png" name="photo" ng-model="newcontact.photo">Red</input>
 
           <img ng-src='img/photoR.png' />
           <label>Name</label>
-          <input type="text" name="name" ng-model="newcontact.name" />
+          <input type="text" id="name" name="name" ng-model="newcontact.name" readonly/>
           <label>Email</label>
-          <input type="text" name="email" ng-model="newcontact.email" />
+          <input type="text" id="email" name="email" ng-model="newcontact.email" />
           <label>Phone</label>
-          <input type="text" name="phone" ng-model="newcontact.phone" />
+          <input type="text" id="phone" name="phone" ng-model="newcontact.phone" />
           <br/>
           <input type="hidden" ng-model="newcontact.id" />
           <input type="button" value="Save" ng-click="saveContact()" class="btn btn-primary" />
           <input type="button" value="Cancel" ng-click="cancel()" class="btn btn-primary" />
+
       </form>
     </div>
 
@@ -109,10 +110,10 @@
 
       <ul id="people">
           <li ng-repeat="contact in contacts | orderBy: 'name'" id="contact-{{contact.id}}">
-
+            <a href="javascript:void(0)" ng-click="details(contact.id)" >
             <div class="contactName"><img ng-src='img/{{ contact.photo }}' />{{ contact.name }}</div>
           
-            <!-- <td> <a href="javascript:void(0)" ng-click="edit(contact.id)" >edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a> -->
+            <!-- <td> <a href="javascript:void(0)" ng-click="edit(contact.id)" >edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a> --></a>
           </li>
       </ul>
 
