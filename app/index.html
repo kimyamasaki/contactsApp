@@ -27,9 +27,13 @@
 <header>
   <img src="./img/hamburger.png" class="hamburger" />
   <h1>Contacts</h1>
-  <a href ng-click="hideShow = !hideShow;contactsHideShow=!contactsHideShow" id="addButton"><img src="./img/add_btn.png" /></a>
+  <div ng-show="contactsHideShow">
+    <a href ng-click="add(contact.id)" id="addButton"><img src="./img/add_btn.png" /></a>
+  </div>
   <div ng-show="hideShow">
-  <a href="javascript:void(0)" ng-click="edit(contact.id)" id="addButton" class="btn btn-primary">Edit</a>
+  <div ng-show="editHideShow">
+    <a href="javascript:void(0)" ng-click="edit(contact.id)" id="addButton" class="btn btn-primary">Edit</a>
+  </div>
   </div>
 </header>
 
@@ -89,8 +93,8 @@
 
       <form class="well">
           
-          <input type="radio" id="photo" value="photoR.png" name="photo" ng-model="newcontact.photo">Red</input>
-
+          <!-- <input type="radio" id="photo" value="photoR.png" name="photo" ng-model="newcontact.photo">Red</input>
+ -->
           <img ng-src='img/photoR.png' />
           <label>Name</label>
           <input type="text" id="name" name="name" ng-model="newcontact.name" readonly/>
