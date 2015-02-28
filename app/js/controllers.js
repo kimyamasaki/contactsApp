@@ -211,22 +211,37 @@ module.controller('ContactController', function ($scope, ContactService) {
     // $scope.hs = false;
     $scope.contacts = ContactService.list();
 
+    $scope.add = function (id) {
+        $scope.hideShow = !$scope.hideShow;
+        $scope.contactsHideShow = !$scope.contactsHideShow;
+        document.getElementById("name").readOnly = false;
+        document.getElementById("email").readOnly = false;
+        document.getElementById("phone").readOnly = false;
+        $scope.editHideShow = false;
+    }
+
     $scope.cancel = function () {
         $scope.hideShow = false;
         $scope.contactsHideShow = true;
+        $scope.newcontact = {};
     }
 
     $scope.saveContact = function () {
-        // var a = {photo : "photoR.png"};
-        // //console.log(genericPhoto); 
-        // var b = $scope.newcontact;
-        // //console.log(newContactList);
+        var a = {photo : "photoR.png"};
+        //console.log(genericPhoto); 
+        var b = $scope.newcontact;
+        //console.log(newContactList);
         // var c = $.merge(a, b);
-        // console.log(c);
+        // console.log("this is c "+c);
+        // Merge object2 into object1
+        $.extend( a, b );
+        //console.log(a);
+        $scope.newcontact = a;
+        console.log($scope.newcontact);
       
         ContactService.save($scope.newcontact);
 
-        console.log($scope.newcontact);
+        //console.log($scope.newcontact);
         $scope.newcontact = {};
 
         $scope.hideShow = false;
@@ -250,12 +265,14 @@ module.controller('ContactController', function ($scope, ContactService) {
 
     $scope.details = function (id) {
         $scope.newcontact = angular.copy(ContactService.get(id));
-        //document.getElementById("photo").checked = true;
+        
         document.getElementById("name").readOnly = true;
         document.getElementById("email").readOnly = true;
         document.getElementById("phone").readOnly = true;
+
         $scope.hideShow = true;
         $scope.contactsHideShow = false; 
+        $scope.editHideShow = true;
     }
 
 })
