@@ -7,21 +7,21 @@ module.service('ContactService', function () {
     //contacts array to hold list of all contacts
     var contacts = [{
         id: 0,
-        'photo': 'photoG.png',
+        'photo': '../img/contact1.png',
         'name': 'Ari Loreno',
         'email': 'kari.loreno@gmail.com',
         'phone': '604-345-4321',
     },
     {
         id: 1,
-        'photo': 'photoR.png',
+        'photo': '../img/contact2.png',
         'name': 'Zaily Brana',
         'email': 'baily@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 2,
-        'photo': 'photoB.png',
+        'photo': '../img/contact3.png',
         'name': 'Bjruson Bard',
         'email': 'bb345@gmail.com',
         'phone': '233-653-4321',

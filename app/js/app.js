@@ -65,7 +65,7 @@ window.onload = function() {
       // });
 
 
-      //console.log(scrollVal);
+      console.log(scrollVal);
 
       // var scrollBool = true;
 

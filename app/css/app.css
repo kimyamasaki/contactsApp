@@ -27,6 +27,8 @@ h1 {
   color: white;
   font-size: 28px;
   position: absolute;
+  top: 35px;
+  left: 100px;
 }
 
 
@@ -36,8 +38,15 @@ h1 {
   top: 110px;
   position: fixed;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+.container {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
 
 .knobBG {
   position: fixed;
@@ -95,7 +104,7 @@ h1 {
 }
 
 
-#scrollbar{
+/*#scrollbar{
   position:fixed;
   top:0;
   right: -50px;
@@ -107,16 +116,16 @@ h1 {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+*/
 
-
-#scrollbar li {
+/*#scrollbar li {
   background-color: #ddd;
   list-style: none;
   padding: 10px;
   margin: 5px;
   margin-left: -30px;
   border-radius: 3px;
-}
+}*/
 
 li:active {
   background-color: #ddd;
@@ -125,18 +134,28 @@ li:active {
 
 #people {
   list-style-type: none;
-  margin-left: 20px;
+  margin: 0;
   padding: 0;
+  /*padding-left: 30px;*/
+}
+
+#people li {
+  padding: 10px 0 10px 30px;
 }
 
 .contactName {
   display: block;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #58595b;
+  text-decoration: none;
 }
 
 .contactName img {
-  margin: 5px;
-  padding-right: 20px;
+  /*margin: 8px;*/
+  margin-right: 35px;
+  /*left: 15px;*/
+  width: 45px;
 }
 
 
@@ -162,7 +181,7 @@ li:active {
 
 
 /** Detail View **/
-img.phone {
+/*img.phone {
   float: left;
   margin-right: 3em;
   margin-bottom: 2em;
@@ -225,7 +244,7 @@ ul.specs dt {
 
 h1 {
   border-bottom: 1px solid gray;
-}
+}*/
 
 
 
