@@ -2,103 +2,118 @@ var module = angular.module('contactsApp', []);
 
 module.service('ContactService', function () {
     //to create unique contact id
-    var uid = 22;
-    
+    var uid = 30;
+
     //contacts array to hold list of all contacts
     var contacts = [{
         id: 0,
-        'photo': '../img/contact1.png',
-        'name': 'Ari Loreno',
-        'email': 'kari.loreno@gmail.com',
+        'alphabet': 'A',
+        'photo': 'photoG.png',
+        'name': 'Aaron Loreno',
+        'email': 'ari.loreno@gmail.com',
         'phone': '604-345-4321',
+
     },
     {
         id: 1,
-        'photo': '../img/contact2.png',
+        'alphabet': 'Z',
+        'photo': 'photoR.png',
         'name': 'Zaily Brana',
         'email': 'baily@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 2,
-        'photo': '../img/contact3.png',
-        'name': 'Bjruson Bard',
+        'alphabet': 'B',
+        'photo': 'photoB.png',
+        'name': 'Bab Bard',
         'email': 'bb345@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 3,
-        'photo': '../img/contact4.png',
+        'alphabet': 'B',
+        'photo': 'photoR.png',
         'name': 'Bob Marley',
         'email': 'bob.marley@gmail.com',
         'phone': '653-235-4321',
     },
     {
         id: 4,
-        'photo': '../img/contact5.png',
-        'name': 'Diana Manny',
+        'alphabet': 'D',
+        'photo': 'photoG.png',
+        'name': 'Danny Manny',
         'email': 'diana@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 5,
-        'photo': '../img/contact6.png',
+        'alphabet': 'F',
+        'photo': 'photoR.png',
         'name': 'Frank Sinatra',
         'email': 'frankieg@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 6,
-        'photo': '../img/contact7.png',
+        'alphabet': 'F',
+        'photo': 'photoR.png',
         'name': 'Freddie Mercury',
         'email': 'freddie.mercury@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 7,
-        'photo': '../img/contact8.png',
+        'alphabet': 'K',
+        'photo': 'photoG.png',
         'name': 'Kirra',
         'email': 'kir@gmail.com',
         'phone': '253-235-4321',
     },
     {
         id: 8,
-        'photo': '../img/contact9.png',
+        'alphabet': 'K',
+        'photo': 'photoG.png',
         'name': 'Korna Stuart',
         'email': 'korn@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 9,
-        'photo': '../img/contact10.png',
+        'alphabet': 'L',
+        'photo': 'photoB.png',
         'name': 'Larry Little',
         'email': 'little@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 10,
-        'photo': '../img/contact11.png',
+        'alphabet': 'L',
+        'photo': 'photoG.png',
         'name': 'Lassie Thedog',
         'email': 'lassie@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 11,
-        'photo': '../img/contact12.png',
+        'alphabet': 'L',
+        'photo': 'photoB.png',
         'name': 'Loco Roco',
         'email': 'lr@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 12,
-        'photo': '../img/contact13.png',
-        'name': 'Sandy',
+        'alphabet': 'S',
+        'photo': 'photoB.png',
+        'name': 'Saedy Soona',
         'email': 'sandy@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 13,
-        'photo': '../img/contact14.png',
+        'alphabet': 'S',
+        'photo': 'photoG.png',
         'name': 'Sanna Bailey',
         'email': 'sanna@gmail.com',
         'phone': '233-653-4321',
@@ -106,57 +121,158 @@ module.service('ContactService', function () {
    
     {
         id: 14,
-        'photo': '../img/contact15.png',
+        'alphabet': 'S',
+        'photo': 'photoB.png',
         'name': 'Sherri Bailey',
         'email': 'sherri@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 15,
-        'photo': '../img/contact16.png',
+        'alphabet': 'T',
+        'photo': 'photoB.png',
         'name': 'Tany Ta',
         'email': 'tand@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 16,
-        'photo': '../img/contact17.png',
+        'alphabet': 'T',
+        'photo': 'photoG.png',
         'name': 'Teo Lorus',
         'email': 'teonlor@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 17,
-        'photo': '../img/contact18.png',
+        'alphabet': 'T',
+        'photo': 'photoR.png',
         'name': 'Takavlov Dog',
         'email': 'dog@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 19,
-        'photo': '../img/contact19.png',
+        'alphabet': 'V',
+        'photo': 'photoB.png',
         'name': 'Vael Aina',
         'email': 'aina@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 20,
-        'photo': '../img/contact20.png',
-        'name': 'Wann Bard',
+        'alphabet': 'W',
+        'photo': 'photoR.png',
+        'name': 'Wann Rard',
         'email': 'bb345@gmail.com',
         'phone': '233-653-4321',
     },
     {
         id: 21,
-        'photo': '../img/contact21.png',
+        'alphabet': 'W',
+        'photo': 'photoG.png',
         'name': 'Waldo Maslo',
         'email': 'wl@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 22,
+        'alphabet': 'C',
+        'photo': 'photoR.png',
+        'name': 'Cael Leonard',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 23,
+        'alphabet': 'F',
+        'photo': 'photoR.png',
+        'name': 'Faelise Leonard',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 23,
+        'alphabet': 'G',
+        'photo': 'photoR.png',
+        'name': 'Gark Goober',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 24,
+        'alphabet': 'H',
+        'photo': 'photoR.png',
+        'name': 'Gark Goober',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 25,
+        'alphabet': 'I',
+        'photo': 'photoR.png',
+        'name': 'Ibby Arkensaw',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 26,
+        'alphabet': 'J',
+        'photo': 'photoR.png',
+        'name': 'Jaden Lader',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 27,
+        'alphabet': 'M',
+        'photo': 'photoR.png',
+        'name': 'Mao Lader',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 27,
+        'alphabet': 'P',
+        'photo': 'photoR.png',
+        'name': 'Paacko Pony',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 28,
+        'alphabet': 'R',
+        'photo': 'photoR.png',
+        'name': 'Ranaldo Marupeo',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 28,
+        'alphabet': 'U',
+        'photo': 'photoR.png',
+        'name': 'Uno Kersi',
+        'email': 'bb345@gmail.com',
+        'phone': '233-653-4321',
+    },
+    {
+        id: 29,
+        'alphabet': 'X',
+        'photo': 'photoR.png',
+        'name': 'Xavier Ksi',
+        'email': 'bb345@gmail.com',
         'phone': '233-653-4321',
     }
 
     ];
     
 
+
+
+
+
+
+    //$scope.groups = [];
     //console.log(contacts[0]);
 
     //save method create a new contact if not already exists
@@ -211,6 +327,20 @@ module.controller('ContactController', function ($scope, ContactService) {
     // $scope.hs = false;
     $scope.contacts = ContactService.list();
 
+
+    var alphabet = null;
+    
+    $scope.GetSeparator = function(contact) {
+        if (alphabet !== contact.alphabet) {
+            alphabet = contact.alphabet;
+            return true;
+        }
+        
+        return false;
+    };
+
+
+
     $scope.add = function (id) {
         $scope.hideShow = !$scope.hideShow;
         $scope.contactsHideShow = !$scope.contactsHideShow;
@@ -227,17 +357,38 @@ module.controller('ContactController', function ($scope, ContactService) {
     }
 
     $scope.saveContact = function () {
+
+
+
         var a = {photo : "photoR.png"};
         //console.log(genericPhoto); 
         var b = $scope.newcontact;
-        //console.log(newContactList);
-        // var c = $.merge(a, b);
-        // console.log("this is c "+c);
+        //console.log($scope.newcontact);
+        
+        var copyNewContact = $scope.newcontact;
+        
+        var firstLetter = copyNewContact.name[0];
+        var capitalized = firstLetter[0].toUpperCase() + firstLetter.substring(1);
+        console.log(capitalized);
+
+        var c = {alphabet: ''};
+
+        c.alphabet = capitalized;
+        
+        console.log(c);
+
+
+
         // Merge object2 into object1
-        $.extend( a, b );
+        $.extend( a, b, c );
+
+        
+
+
         //console.log(a);
         $scope.newcontact = a;
         console.log($scope.newcontact);
+        $scope.GetSeparator = true;
       
         ContactService.save($scope.newcontact);
 
@@ -246,6 +397,10 @@ module.controller('ContactController', function ($scope, ContactService) {
 
         $scope.hideShow = false;
         $scope.contactsHideShow = true;
+
+
+
+
     }
 
 
@@ -275,8 +430,4 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.editHideShow = true;
     }
 
-
-    $scope.quickMenu = function (id) {
-        console.log("launched menu: " + id);
-    }
 })
