@@ -6,9 +6,9 @@ var contactsApp = angular.module('contactsApp', [
 ]);
 
 
-
 window.onload = function() {
-	// var options = {
+
+  // var options = {
 	//   preventDefault: true
 	// };
 
@@ -90,18 +90,41 @@ window.onload = function() {
 
 // $(rootElement).hammer({domEvents:true}).on("press",".elementSelector",callback);
 
+  
 
-  // actionToggle.on("press", function() {
-  //   $("#actionPhone").toggle('fast');
-  //   $("#actionText").toggle('fast');
-  //   $("#actionOther").toggle('fast');
-  // });
+  /*************** Action menu code ***************/
+
+  var xPos, yPos;
+  // $("#actionToggle").draggable();
+
+  // Get touch position
+  $(document).on('touchstart', '#main', function(e) {
+    xPos = e.originalEvent.touches[0].pageX;
+    yPos = e.originalEvent.touches[0].pageY;    
+  });
+
+  main.on("press", function(e) {   
+    console.log(xPos, yPos);
+    $("#actionToggle").css({'top': yPos-25, 'left': xPos-25}).fadeIn('fast');
+    $("#actionPhone").css({'top': yPos-95, 'left': xPos-75}).fadeIn('fast');
+    $("#actionText").css({'top': yPos-95, 'left': xPos+25}).fadeIn('fast');
+  });
+
+  main.on("pressup", function(e) {   
+    $("#actionToggle").fadeOut('fast');
+    $("#actionPhone").fadeOut('fast');
+    $("#actionText").fadeOut('fast');
+  });
 
   // actionPhone.on("release", function(){
   //   document.body..add('light');
   // });
 
-  //Scrolling 
+
+
+
+  /*************** Scrolling ***************/
+
   $("#main").scroll(function(){
     $(".knob").val($('#main').scrollTop()/10);
     $(".knob").trigger("change");
@@ -115,7 +138,7 @@ window.onload = function() {
 
           console.log("change : " + value);
 
-          var increments = (maxScroll / 100) * (value);
+          var increments = (maxScroll / 70) * (value);
 
 
           content.scrollTop = increments;
@@ -243,5 +266,3 @@ window.onload = function() {
   // var dragKnob = Draggable.get(knob);
 
 };
-
-

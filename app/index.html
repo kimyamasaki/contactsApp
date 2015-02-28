@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
@@ -21,7 +22,7 @@
  <!-- <script src="js/animations.js"></script> -->
   <script src="js/controllers.js"></script>
 </head>
-<body>
+<body oncontextmenu="return false">
 <div ng-app="contactsApp" ng-controller="ContactController">
 
 <header>
@@ -44,7 +45,7 @@
     <input id="scrollknob" class="knob" 
         data-angleOffset="-95" 
         data-angleArc="90" 
-        data-fgColor="#66EE66" 
+        data-fgColor="#40c9c5" 
         data-rotation="clockwise" 
         value="0" 
         data-thickness=".08" 
@@ -54,12 +55,13 @@
         data-cursor="true">
 </div>
 
-<div id="actionToggle">...</div>
-<div id="actionPhone" class="actionItems">...</div>
-<div id="actionText" class="actionItems">...</div>
-<div id="actionOther" class="actionItems">...</div>
+<div class="gradient"></div>
 
-      
+<div id="actionToggle"></div>
+<div id="actionPhone" class="actionItems"></div>
+<div id="actionText" class="actionItems"></div>
+
+<div id="container">      
 <div id="main">
   <div id="scrollbar">
     
@@ -95,10 +97,11 @@
 
       <ul id="people">
           <li ng-repeat="contact in contacts | orderBy: 'name'" id="contact-{{contact.id}}">
-            <a href="javascript:void(0)" ng-click="details(contact.id)" >
+            <a href="javascript:void(0)" ng-click="details(contact.id)" ng-Mousedown="quickMenu(contact.phone)">
             <div class="contactName"><img ng-src='img/{{ contact.photo }}' />{{ contact.name }}</div>
           
             <!-- <td> <a href="javascript:void(0)" ng-click="edit(contact.id)" >edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a> --></a>
+            <div class="divider"></div>
           </li>
       </ul>
 
@@ -127,6 +130,7 @@
     </div>
   </div>
     
+</div>
 </div>
 </div>
   
