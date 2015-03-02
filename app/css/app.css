@@ -7,14 +7,19 @@ html, body {
   /*overflow:hidden;*/
 }
 
-#bigPhoto {
+/*#bigPhoto {
   z-index: 50;
-}
+}*/
 
 #photo {
   position: fixed;
   top: 0px;
   left: 0;
+
+  -webkit-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 header {
@@ -33,10 +38,10 @@ header {
   z-index: 5;
 
 
-  -webkit-transition: all 300ms ease;
-  -moz-transition: all 300ms ease;
-  -o-transition: all 300ms ease;
-  transition: all 300ms ease;
+  -webkit-transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .gradient {
@@ -93,10 +98,10 @@ h1 {
   margin: 0;
   padding: 0;
 
-  -webkit-transition: all 300ms ease;
-  -moz-transition: all 300ms ease;
-  -o-transition: all 300ms ease;
-  transition: all 300ms ease;
+  -webkit-transition: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 /*#container {
@@ -130,10 +135,10 @@ h1 {
   z-index: 10;
   display: none;
 
-  -webkit-transition: all 200ms ease;
-  -moz-transition: all 200ms ease;
-  -o-transition: all 200ms ease;
-  transition: all 200ms ease;
+  -webkit-transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .actionItems {
@@ -143,10 +148,10 @@ h1 {
   left: 0;
   display: none;
   /*opacity: 0;*/
-  -webkit-transition: all 300ms ease;
-  -moz-transition: all 300ms ease;
-  -o-transition: all 300ms ease;
-  transition: all 300ms ease;
+  -webkit-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .actionItems img {
@@ -221,9 +226,6 @@ li:active {
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   top: 0px;
-  /*position: relative;*/
-    /*overflow:hidden;*/
-    clip: rect(10px, 10px, 10px, 10px);
 }
 
 #searchButton {
@@ -253,7 +255,7 @@ li:active {
 }
 
 #backButton {
-  position: absolute;
+  position: fixed;
   top: 18px;
   left: 22px;
   z-index: 5;
@@ -284,7 +286,7 @@ li:active {
   font-family: "Segoe UI", sans-serif;
   color: white;
   font-size: 28px;
-  position: absolute;
+  position: fixed;
   top: 190px;
   z-index: 60;
 

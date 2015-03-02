@@ -362,12 +362,13 @@ module.controller('ContactController', function ($scope, ContactService) {
     }
 
     $scope.cancel = function () {
+        $scope.searchNames = "";
         $scope.hideShow = false;
         $scope.contactsHideShow = true;
         $scope.knobHideShow = true;
         $scope.newcontact = {};
-
-        $('header').css({'opacity':1, 'height':110 +'px'});
+        
+        $('header').fadeIn().css({'top':0 +'px'});
         // $('header').css({'top':0 +'px'});
         $('#main').css({'top':110 +'px'});
 
@@ -376,7 +377,7 @@ module.controller('ContactController', function ($scope, ContactService) {
 
     $scope.saveContact = function () {
 
-
+        $scope.searchNames = "";
 
         var a = {photo : "photoR.png"};
         //console.log(genericPhoto); 
@@ -406,7 +407,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         //console.log(a);
         $scope.newcontact = a;
         console.log($scope.newcontact);
-        $scope.GetSeparator = true;
+        // $scope.GetSeparator = true;
       
         ContactService.save($scope.newcontact);
 
@@ -417,8 +418,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.contactsHideShow = true;
         $scope.knobHideShow = true;
 
-
-        $('header').css({'top':0 +'px'});
+        $('header').fadeIn().css({'top':0 +'px'});
         $('#main').css({'top':110 +'px'});
         $('#addButton').fadeIn();
 
@@ -458,7 +458,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.knobHideShow = false;
 
         // $('header').css({'top':-120 +'px'});
-        $('header').css({'opacity':0});
+        $('header').fadeOut().css({'top':-120 +'px'});
         // $('header').css('background-image','transparent');
         $('#main').css({'top':265 +'px'});
 
