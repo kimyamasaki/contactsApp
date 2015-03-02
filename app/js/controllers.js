@@ -362,7 +362,8 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.knobHideShow = true;
         $scope.newcontact = {};
 
-        $('header').css({'top':0 +'px'});
+        $('header').css({'opacity':1, 'height':110 +'px'});
+        // $('header').css({'top':0 +'px'});
         $('#main').css({'top':110 +'px'});
 
         $('#addButton').fadeIn();
@@ -414,6 +415,7 @@ module.controller('ContactController', function ($scope, ContactService) {
 
         $('header').css({'top':0 +'px'});
         $('#main').css({'top':110 +'px'});
+        $('#addButton').fadeIn();
 
     }
 
@@ -450,10 +452,12 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.editHideShow = true;
         $scope.knobHideShow = false;
 
-        $('header').css({'top':-120 +'px'});
+        // $('header').css({'top':-120 +'px'});
+        $('header').css({'opacity':0});
         // $('header').css('background-image','transparent');
-        $('#main').css({'top':0 +'px'});
+        $('#main').css({'top':265 +'px'});
 
+        $('#addButton').fadeOut();
         $('#editButton').fadeIn();
 
         $('#scrollknob, .gradient').fadeOut();
