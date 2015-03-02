@@ -6,76 +6,37 @@ var contactsApp = angular.module('contactsApp', [
 ]);
 
 
-
 window.onload = function() {
-	// var options = {
-	//   preventDefault: true
-	// };
-
-
-  // $('#scrollbar').scroll(function() {
-  //   s = $('#scrollbar').scrollTop();
-  //   $('#main').css("-webkit-transform", "translateY(" + (s*10) + "px)");
-  // })
 
 	var main = new Hammer(document.getElementById("main"));
   var actionToggle = new Hammer(document.getElementById("actionToggle"));
-  var scrollbar = new Hammer(document.getElementById("scrollbar"));
+  var actionPhone = new Hammer(document.getElementById("actionPhone"));
+  var actionText = new Hammer(document.getElementById("actionText"));
+  var overlay = new Hammer(document.getElementById("overlay"));
 
-
- //  // Summon thy gracious side bar
-	// Hammer(document.getElementById("main")).on("swipe", function() {
- //      console.log("hello");
- //      $('#scrollbar').animate({right: "0"}, 500)  
- //  });
-
- //  // Hide side bar after a delay
- //  Hammer(document.getElementById("scrollbar")).on("panend", function() {
- //      $('#scrollbar').delay(2000).animate({right: "-50"}, 500);  
- //  });
-
-
-  // Hammer(document.getElementById("#contact-" + contact.id)).on("swipe", function() {
-  //     console.log(contact.id);
-  // });
-  
-  
   var scrollVal = 0;
   var mainHeight = $('#main').height();
-  var scrollbarHeight = $('#scrollbar').height();
-  var coeff = mainHeight / scrollbarHeight;
-
-
 
   console.log(mainHeight);
-  console.log(scrollbarHeight);
 
-  main.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
+  // main.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
 
   var currentScrollValue=0;
 
   var scrollBool = false;
   // listen to events...
   main.on("panup pandown", function(ev) {
-      scrollVal = $('#main').scrollTop();
-      // $(".knob").knob({
-      // change : function (scrollVal) {
-      
-      // }
-      // });
-
-
-      console.log(scrollVal);
+    $(".knob").val($('#main').scrollTop()/20);
+    $(".knob").trigger("change");
+      // scrollVal = $('#main').scrollTop();
+      // console.log(scrollVal);
 
       // var scrollBool = true;
 
       //     if (scrollBool) {
-      //       currentScrollValue = scrollVal/10;
-            
+      //       currentScrollValue = scrollVal/10;   
       //     };
-
   
-
       // $('html, body').animate({ scrollTop: scrollVal * coeff }, { duration: 10, easing: 'swing'});
   });
 
@@ -83,45 +44,89 @@ window.onload = function() {
   var content = document.getElementById("main");
   var knob = document.getElementById("scrollknob");
   var maxScroll = content.scrollHeight - content.offsetHeight;
-  // var needsRotationUpdate = false;
-  // var sections = 9;
-
-//have an event
-
-// $(rootElement).hammer({domEvents:true}).on("press",".elementSelector",callback);
 
 
-  // actionToggle.on("press", function() {
-  //   $("#actionPhone").toggle('fast');
-  //   $("#actionText").toggle('fast');
-  //   $("#actionOther").toggle('fast');
-  // });
 
-  // actionPhone.on("release", function(){
-  //   document.body..add('light');
-  // });
+/*************** Action menu code ***************/
 
-  //Scrolling 
+  var xPos, yPos;
+
+  // Get touch position
+  $(document).on('touchstart', '#main', function(e) {
+    xPos = e.originalEvent.touches[0].pageX;
+    yPos = e.originalEvent.touches[0].pageY;
+
+    $("#actionPhone").css({'top': yPos-30, 'left': xPos-30});
+    $("#actionText").css({'top': yPos-30, 'left': xPos-30});    
+    $("#actionToggle").css({'top': yPos-60, 'left': xPos-60}); 
+  });
+
+  main.on("press", function(e) {   
+    console.log(xPos, yPos);
+    
+    $("#actionToggle").css({'top': yPos-60, 'left': xPos-60}).fadeIn('fast');
+    $("#actionPhone").css({'top': yPos-78, 'left': xPos-75, 'opacity': 1});
+    $("#actionText").css({'top': yPos-80, 'left': xPos+10, 'opacity': 1});
+    $("#overlay").fadeIn();
+
+  });
+
+  main.on("pressup", function(e) {   
+    $("#actionToggle").css({'opacity': 0.4});
+  });
+
+
+
+  actionPhone.on("tap", function(e) {
+    console.log('phone call');
+    $("#actionToggle").fadeOut('fast');
+    $("#actionPhone").fadeOut('fast');
+    $("#actionText").fadeOut('fast');
+    $("#overlay").fadeOut();
+  });
+
+  actionText.on("tap", function(e) {
+    console.log('text');
+    $("#actionToggle").fadeOut('fast');
+    $("#actionPhone").fadeOut('fast');
+    $("#actionText").fadeOut('fast');
+    $("#overlay").fadeOut();
+  });
+
+  overlay.on("tap", function(e) {
+    console.log('close');
+    $("#actionToggle").fadeOut('fast');
+    $("#actionPhone").fadeOut('fast');
+    $("#actionText").fadeOut('fast');
+    $("#overlay").fadeOut();
+  });
+
+
+  /*************** Scrolling ***************/
+
+ //  $("#main").scroll(function(){
+ //    $(".knob").val($('#main').scrollTop()/20);
+ //    $(".knob").trigger("change");
+ //    //console.log("scrolling");
+ // });
+
   $("#main").scroll(function(){
     $(".knob").val($('#main').scrollTop()/10);
     $(".knob").trigger("change");
     //console.log("scrolling");
- });
+  });
 
   $(".knob").knob({
       change : function (value) {
-
-
-
           console.log("change : " + value);
+          var increments = (maxScroll / 70) * (value);
+          $('#main').scrollTop = increments;
 
-          var increments = (maxScroll / 100) * (value);
-
-
-          content.scrollTop = increments;
-          //console.log(increments);
-          //$('#main').scrollTop(increments);
-
+          if (value == 100) {
+            $(".gradient").fadeOut('fast');
+          }
+          // console.log(increments);
+          // $('#main').scrollTop(increments);
 
           // if (value == 100) {
           //   console.log("sdfs");
@@ -134,45 +139,86 @@ window.onload = function() {
       cancel : function () {
           console.log("cancel : ", this);
       },
-      /*format : function (value) {
-          return value + '%';
-      },*/
-      // draw : function () {
-
-      //     // "tron" case
-      //     if(this.$.data('skin') == 'tron') {
-
-      //         this.cursorExt = 0.3;
-
-      //         var a = this.arc(this.cv)  // Arc
-      //             , pa                   // Previous arc
-      //             , r = 1;
-
-      //         this.g.lineWidth = this.lineWidth;
-
-      //         if (this.o.displayPrevious) {
-      //             pa = this.arc(this.v);
-      //             this.g.beginPath();
-      //             this.g.strokeStyle = this.pColor;
-      //             this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
-      //             this.g.stroke();
-      //         }
-
-      //         this.g.beginPath();
-      //         this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
-      //         this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
-      //         this.g.stroke();
-
-      //         this.g.lineWidth = 2;
-      //         this.g.beginPath();
-      //         this.g.strokeStyle = this.o.fgColor;
-      //         this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
-      //         this.g.stroke();
-
-      //         return false;
-      //     }
-      // }
   });
+};
+
+
+
+/*************** Old Action menu code ***************/
+
+  // var draggable = document.getElementById('actionToggle');
+  // draggable.addEventListener('touchmove');
+
+  // var xPos, yPos;
+  // // $("#actionToggle").draggable();
+
+  // // Get touch position
+  // // $(document).on('touchstart', '#main', function(e) {
+  // //   xPos = e.originalEvent.touches[0].pageX;
+  // //   yPos = e.originalEvent.touches[0].pageY;  
+  // //   console.log(xPos, yPos);
+  // // });
+
+
+  // $( "#main" ).on({
+  //   touchstart: function(e) {
+  //     xPos = e.originalEvent.touches[0].pageX;
+  //     yPos = e.originalEvent.touches[0].pageY;  
+  //     console.log(xPos, yPos);
+
+  //     $("#actionToggle").css({'left': xPos + 'px'});
+  //     $("#actionToggle").css({'top': yPos + 'px'});
+
+
+
+  //     pressTimer = window.setTimeout(function() {
+  //       $("#actionToggle").fadeIn('fast');
+  //       draggable.addEventListener('touchmove', function(event) {
+          
+  //         console.log('dragging');
+  //         var touch = event.targetTouches[0];
+          
+  //         $('html, body').css({
+  //             'overflow': 'hidden',
+  //             'height': '100%'
+  //         });
+  //         // Place element where the finger is
+  //         $("#actionToggle").css({'left': touch.pageX + 'px'});
+  //     $("#actionToggle").css({'top': touch.pageY + 'px'});
+  //         // $("#actionToggle").preventDefault();
+  //       }, false);
+  //     },1000)
+  //     return false; 
+      
+
+  //   }, touchend: function() {
+  //     $("#actionToggle").fadeOut('fast');
+  //     // console.log("dragging");
+
+  //     // pressTimer = window.setTimeout(function(e) {
+  //     //   console.log("pressing");
+  //     //   // $("#actionToggle").fadeIn('fast');
+
+
+  //     //   draggable.addEventListener('touchmove', function(event) {
+  //     //     var touch = event.targetTouches[0];
+          
+  //     //     $('html, body').css({
+  //     //         'overflow': 'hidden',
+  //     //         'height': '100%'
+  //     //     });
+  //     //     // Place element where the finger is
+  //     //     $("#actionToggle").css({'left': xPos + 'px'});
+  //     //     $("#actionToggle").css({'top': yPos + 'px'});
+  //     //     // $("#actionToggle").preventDefault();
+  //     //   }, false);
+  //     // },1000)
+  //     // return false; 
+  //   }
+  // });
+
+
+
 
 
   // // Greensock spinner tutorial link: http://codepen.io/GreenSock/pen/gnoDc
@@ -241,7 +287,3 @@ window.onload = function() {
   // //grab the Draggable instances for the content and the knob, and store them in variables so that we can reference them in other functions very quickly. 
   // var dragContent = Draggable.get(content);
   // var dragKnob = Draggable.get(knob);
-
-};
-
-

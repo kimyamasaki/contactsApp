@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+
+
+
+
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
@@ -15,148 +20,127 @@
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/hammer.js/hammer.js"></script>
   <script src="bower_components/greensock/src/minified/utils/Draggable.min.js"></script>
-  <script src="bower_components/greensock/src/minified/TweenMax.min.js"></script>
+  <script src="bower_components/greensock/src/minified/TweenLite.min.js"></script>
+  <script src="bower_components/greensock/src/minified/easing/EasePack.min.js"></script>
+  <script src="bower_components/greensock/src/minified/plugins/CSSPlugin.min.js"></script>
   <script src="bower_components/jQuery-Knob-master/dist/jquery.knob.min.js"></script>
   <script src="js/app.js"></script>
- <!-- <script src="js/animations.js"></script> -->
   <script src="js/controllers.js"></script>
-</head>
-<body>
+
+  
+  </head>
+<body oncontextmenu="return false">
+
 <div ng-app="contactsApp" ng-controller="ContactController">
 
-<header>
-  <img src="./img/hamburger.png" class="hamburger" />
-  <h1>Contacts</h1>
-  <div ng-show="contactsHideShow">
-    <a href ng-click="add(contact.id)" id="addButton"><img src="./img/add_btn.png" /></a>
-  </div>
-  <div ng-show="hideShow">
-  <div ng-show="editHideShow">
-    <a href="javascript:void(0)" ng-click="edit(contact.id)" id="addButton" class="btn btn-primary">Edit</a>
-  </div>
-  </div>
-</header>
 
 
 
-<div class="knobBG">
-    <!-- <input type="text" id="scrollknob" class="knob" data-width="100" data-cursor=true value="0"> -->
-    <input id="scrollknob" class="knob" 
-        data-angleOffset="-95" 
-        data-angleArc="90" 
-        data-fgColor="#66EE66" 
-        data-rotation="clockwise" 
-        value="0" 
-        data-thickness=".08" 
-        data-width="250" 
-        data-linecap="round" 
-        data-displayInput="false"
-        data-cursor="true">
-</div>
-
-<div id="actionToggle">...</div>
-<div id="actionPhone" class="actionItems">...</div>
-<div id="actionText" class="actionItems">...</div>
-<div id="actionOther" class="actionItems">...</div>
-
-      
-<div id="main">
-  <div id="scrollbar">
-    <!-- <ul>
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-      <li>D</li>
-      <li>E</li>
-      <li>F</li>
-      <li>G</li>
-      <li>H</li>
-      <li>I</li>
-      <li>J</li>
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-      <li>D</li>
-      <li>E</li>
-      <li>F</li>
-      <li>G</li>
-      <li>H</li>
-      <li>I</li>
-      <li>J</li>
-    </ul> -->
-  </div>
-  
-    
-    <div ng-show="hideShow">
-
-
-
-      <form class="well">
-          
-          <!-- <input type="radio" id="photo" value="photoR.png" name="photo" ng-model="newcontact.photo">Red</input>
- -->
-          <img ng-src='img/photoR.png' />
-          <label>Name</label>
-          <input type="text" id="name" name="name" ng-model="newcontact.name" readonly/>
-          <label>Email</label>
-          <input type="text" id="email" name="email" ng-model="newcontact.email" />
-          <label>Phone</label>
-          <input type="text" id="phone" name="phone" ng-model="newcontact.phone" />
-          <br/>
-          <input type="hidden" ng-model="newcontact.id" />
-          <input type="button" value="Save" ng-click="saveContact()" class="btn btn-primary" />
-          <input type="button" value="Cancel" ng-click="cancel()" class="btn btn-primary" />
-
-      </form>
-    </div>
-
-    
+  <header>
+    <!-- <img src="./img/hamburger.png" class="hamburger" /> -->
+    <h1>Contacts</h1>
     <div ng-show="contactsHideShow">
-      
-
-      <ul id="people">
-          <li ng-repeat="contact in contacts | orderBy: 'name'" id="contact-{{contact.id}}">
-
-             <div ng-show="{{GetSeparator(contact)}}">
-            ------- {{contact.alphabet}} -------
-            </div>
+      <div id="bigPhoto"><img ng-src='img/{{ contact.photo }}' /></div>
+      <a href ng-click="add(contact.id)" id="addButton"><img src="./img/add_btn.png" /></a>
+    </div>
+    
+  </header>
 
 
-            <a href="javascript:void(0)" ng-click="details(contact.id)" >
-            <div class="contactName"><img ng-src='img/{{ contact.photo }}' />{{ contact.name }}</div>
-          
-            <!-- <td> <a href="javascript:void(0)" ng-click="edit(contact.id)" >edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a> --></a>
-          </li>
-      </ul>
 
-          <!-- <table class="table table-striped table-bordered">
-          <thead>
-              <tr>
-                  <th>Photo</th>              
-                  <th>Name</th>
-      
-                  <th>Action</th>
-              </tr>
-          </thead>
-          <tbody>
+  <div class="knobBG">
+      <!-- <input type="text" id="scrollknob" class="knob" data-width="100" data-cursor=true value="0"> -->
+      <input id="scrollknob" class="knob" 
+          data-angleOffset="-95" 
+          data-angleArc="90" 
+          data-fgColor="#40c9c5" 
+          data-bgColor="#ddd" 
+          data-rotation="clockwise" 
+          value="0" 
+          data-thickness=".08" 
+          data-width="250" 
+          data-linecap="round" 
+          data-displayInput="false"
+          data-cursor="true"
+          >
+  </div>
+
+  <div class="gradient"></div>
+
+  <div id="actionToggle"></div>
+  <div id="actionPhone" class="actionItems bounce"><img src="./img/call_btn.png" /></div>
+  <div id="actionText" class="actionItems bounce"><img src="./img/text_btn.png" /></div>
+
+  <div id="container">      
+    <div id="main">
+      <div ng-show="hideShow">
+
+          <!-- <form class="well"> -->
+              <div ng-show="hideShow">
+                <div ng-show="editHideShow">
+                  <a href="javascript:void(0)" value="Cancel" ng-click="cancel()" id="backButton" /><img src="./img/back_btn.png" /></a>
+                  <a href="javascript:void(0)" ng-click="edit(contact.id)" id="editButton"><img src="./img/edit_btn.png" /></a>
+                </div>
+              </div>
+              <!-- <img ng-src='img/bigc1.png' class="bigPic" /> -->
+
+              <img id="photo" ng-src='img/{{ newcontact.bigPhoto }}'/>
+
+<!--               <label>Name</label> -->
+              <div class="details subheader nameSub">Name</div>
+              <input type="text" id="name" name="name" ng-model="newcontact.name" class="titleName" readonly/>
               
-              <tr ng-repeat="contact in contacts" id="contact-{{contact.id}}">
-                  <td><img ng-src='img/{{ contact.photo }}' /></td>
-                  <td>{{ contact.name }}</td>
-                
-                  <td> <a href="javascript:void(0)" ng-click="edit(contact.id)" >edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a>
+              <!-- <label>Phone</label> -->
+              <div class="details subheader">Phone</div>
+              <input type="text" id="phone" name="phone" ng-model="newcontact.phone" />
+
+              <!-- <label>Email</label> -->
+              <div class="details subheader">Email</div>
+              <input type="text" id="email" name="email" ng-model="newcontact.email" />
+
+              <br/>
+              <input type="hidden" ng-model="newcontact.id" />
+              
+              <a href="javascript:void(0)" ng-click="saveContact()" id="saveButton">Save</a>
+
+              <a href="javascript:void(0)" ng-click="cancel()" id="cancelButton">Cancel</a>
 
 
-                  </td>
-              </tr>
-          </tbody>
-      </table> -->
+              <!-- <input type="button" value="Cancel" ng-click="cancel()" class="btn btn-primary" /> -->
+
+          <!-- </form> -->
+        </div>
+
+        
+        <div ng-show="contactsHideShow">
+          
+
+          <ul id="people">
+              <li ng-repeat="contact in contacts | orderBy: 'name'" id="contact-{{contact.id}}">
+
+                <div class="subContainer">
+                  <div ng-show="{{GetSeparator(contact)}}" class="subheader">
+                  {{contact.alphabet}}
+                  </div>
+                </div>
+
+
+                <a href="javascript:void(0)" ng-click="details(contact.id)" >
+                <div class="contactName"><img ng-src='img/{{ contact.photo }}' />{{ contact.name }}</div>
+              
+                <!-- <td> <a href="javascript:void(0)" ng-click="edit(contact.id)" >edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a> --></a>
+                <div class="divider"></div>
+              </li>
+          </ul>
+        </div>
+      </div>
+        
     </div>
   </div>
-    
+  <div id="overlay"></div>
 </div>
-</div>
-  
+
+
   
 
 </body>
