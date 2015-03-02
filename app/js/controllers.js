@@ -341,8 +341,6 @@ module.controller('ContactController', function ($scope, ContactService) {
 
     }
 
-
-
     $scope.add = function (id) {
         $scope.generalHideShow = true;
 
@@ -356,10 +354,14 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.toggleHideShow = false;
         $scope.saveHideShow = true;
 
+
+        $('header').fadeOut().css({'top':-120 +'px'});
+        $('#main').css({'top':0 +'px','position':'absolute', 'height':700+'px'});
+        // $('#main').css({'top':0 +'px'});
+        $('#info').css({'top':200 +'px'});
+
         $('#addButton').fadeOut();
         $('#backButton').fadeIn();
-        $('header').css({'top':-120 +'px'});
-        $('#main').css({'top':265 +'px'});
         $('#saveButton, #cancelButton').css({'display':'block'});
         $('#name, #phone, #email').removeClass('clearForm');
         $('#name').removeClass('titleName');
@@ -376,8 +378,8 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.newcontact = {};
         
         $('header').fadeIn().css({'top':0 +'px'});
-        // $('header').css({'top':0 +'px'});
-        $('#main').css({'top':110 +'px'});
+        $('#main').css({'position':'fixed','top':110 +'px','height':530 +'px'});
+
 
         $('#addButton').fadeIn();
     }
@@ -403,13 +405,8 @@ module.controller('ContactController', function ($scope, ContactService) {
         
         console.log(c);
 
-
-
         // Merge object2 into object1
         $.extend( a, b, c );
-
-        
-
 
         //console.log(a);
         $scope.newcontact = a;
@@ -427,9 +424,8 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.saveHideShow = true;
 
         $('header').fadeIn().css({'top':0 +'px'});
-        $('#main').css({'top':110 +'px'});
+        $('#main').css({'position':'fixed','top':110 +'px','height':530 +'px'});
         $('#addButton').fadeIn();
-
     }
 
 
@@ -437,6 +433,8 @@ module.controller('ContactController', function ($scope, ContactService) {
 
         ContactService.delete(id);
         if ($scope.newcontact.id == id) $scope.newcontact = {};
+
+        $('#main').css({'position':'fixed','height':530 +'px'});
     }
 
 
@@ -452,8 +450,9 @@ module.controller('ContactController', function ($scope, ContactService) {
         $('#name, #phone, #email').removeClass('clearForm');
         $('#name').removeClass('titleName');
         $('.nameSub').css({'display':'block'});
+        $('#info').css({'top':200 +'px'});
 
-        // $('#main').css({'position':'absolute'});
+        $('#main').css({'position':'absolute', 'height':700+'px'});
     }
 
     $scope.details = function (id) {
@@ -470,10 +469,9 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.toggleHideShow = false;
         $scope.saveHideShow = false;
 
-        // $('header').css({'top':-120 +'px'});
         $('header').fadeOut().css({'top':-120 +'px'});
-        // $('header').css('background-image','transparent');
-        $('#main').css({'top':265 +'px'});
+        $('#main').css({'top':0 +'px'});
+        $('#info').css({'top':265 +'px'});
 
         $('#addButton').fadeOut();
         $('#editButton').fadeIn();
@@ -484,6 +482,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $('#name, #phone, #email').addClass('clearForm');
         $('#name').addClass('titleName');
         $('.nameSub').css({'display':'none'});
+        $('#main').css({'position':'fixed','height':530 +'px'});
     }
 
 })
