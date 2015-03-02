@@ -353,8 +353,11 @@ module.controller('ContactController', function ($scope, ContactService) {
         document.getElementById("email").readOnly = false;
         document.getElementById("phone").readOnly = false;
         $scope.editHideShow = false;
+        $scope.toggleHideShow = false;
+        $scope.saveHideShow = true;
 
         $('#addButton').fadeOut();
+        $('#backButton').fadeIn();
         $('header').css({'top':-120 +'px'});
         $('#main').css({'top':265 +'px'});
         $('#saveButton, #cancelButton').css({'display':'block'});
@@ -369,6 +372,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.hideShow = false;
         $scope.contactsHideShow = true;
         $scope.knobHideShow = true;
+        $scope.toggleHideShow = true;
         $scope.newcontact = {};
         
         $('header').fadeIn().css({'top':0 +'px'});
@@ -420,6 +424,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.hideShow = false;
         $scope.contactsHideShow = true;
         $scope.knobHideShow = true;
+        $scope.saveHideShow = true;
 
         $('header').fadeIn().css({'top':0 +'px'});
         $('#main').css({'top':110 +'px'});
@@ -439,6 +444,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         document.getElementById("name").readOnly = false;
         document.getElementById("email").readOnly = false;
         document.getElementById("phone").readOnly = false;
+        $scope.saveHideShow = true;
 
         $('#editButton').fadeOut();
 
@@ -446,6 +452,8 @@ module.controller('ContactController', function ($scope, ContactService) {
         $('#name, #phone, #email').removeClass('clearForm');
         $('#name').removeClass('titleName');
         $('.nameSub').css({'display':'block'});
+
+        // $('#main').css({'position':'absolute'});
     }
 
     $scope.details = function (id) {
@@ -459,6 +467,8 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.contactsHideShow = false; 
         $scope.editHideShow = true;
         $scope.knobHideShow = false;
+        $scope.toggleHideShow = false;
+        $scope.saveHideShow = false;
 
         // $('header').css({'top':-120 +'px'});
         $('header').fadeOut().css({'top':-120 +'px'});

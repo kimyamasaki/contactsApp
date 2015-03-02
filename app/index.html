@@ -38,12 +38,12 @@
 
   <header>
     <!-- <img src="./img/hamburger.png" class="hamburger" /> -->
-    <h1>Contacts</h1>
+    <h1>All Contacts</h1>
     <div ng-show="contactsHideShow">
       
       <a href ng-click="add(contact.id)" id="addButton"><img src="./img/add_btn.png" /></a>
 
-      <a href ng-click="search()" id="searchButton"> Search!</a>
+      <a href ng-click="search()" id="searchButton"><img src="./img/search.png" /></a>
 
     </div>
     
@@ -69,7 +69,7 @@
   </div>
   </div>
 
-  <div class="gradient"></div>
+  <!-- <div class="gradient"></div> -->
 
   <div id="actionToggle"></div>
   <div id="actionPhone" class="actionItems"><img src="./img/call_btn.png" /></div>
@@ -92,27 +92,36 @@
               <img id="photo" ng-src='img/{{ newcontact.bigPhoto }}'/>
 
               <div ng-show="generalHideShow">
+
+              <a href="javascript:void(0)" value="Cancel" ng-click="cancel()" id="backButton" /><img src="./img/back_btn.png" /></a>
+
               <img id="photo" ng-src='./img/contactdetails/portrait_default.png'/>
               </div>
 
+              <div id="info">
 <!--               <label>Name</label> -->
-              <div class="details subheader nameSub">Name</div>
-              <input type="text" id="name" name="name" ng-model="newcontact.name" class="titleName" readonly/>
-              
-              <!-- <label>Phone</label> -->
-              <div class="details subheader">Phone</div>
-              <input type="text" id="phone" name="phone" ng-model="newcontact.phone" />
+                  <div class="details subheader nameSub">Name</div>
+                  <input type="text" id="name" name="name" ng-model="newcontact.name" class="titleName" readonly/>
+                  
+                  <!-- <label>Phone</label> -->
+                  <div class="details subheader">Phone</div>
+                  <input type="text" id="phone" name="phone" ng-model="newcontact.phone" />
 
-              <!-- <label>Email</label> -->
-              <div class="details subheader">Email</div>
-              <input type="text" id="email" name="email" ng-model="newcontact.email" />
+                  <!-- <label>Email</label> -->
+                  <div class="details subheader">Email</div>
+                  <input type="text" id="email" name="email" ng-model="newcontact.email" />
 
-              <br/>
-              <input type="hidden" ng-model="newcontact.id" />
-              
-              <a href="javascript:void(0)" ng-click="saveContact()" id="saveButton">Save</a>
+                  <br/>
+                  <input type="hidden" ng-model="newcontact.id" />
+                  
+                  <!-- <a href="javascript:void(0)" ng-click="saveContact()" id="saveButton" disabled>Save</a> -->
 
-              <a href="javascript:void(0)" ng-click="cancel()" id="cancelButton">Cancel</a>
+                  <div ng-show="saveHideShow">
+                    <input type="submit" href="javascript:void(0)" ng-click="saveContact()" id="saveButton" disabled>Save</a>
+                  </div>
+
+                  <a href="javascript:void(0)" ng-click="cancel()" id="cancelButton">Cancel</a>
+              </div>
 
 
               <!-- <input type="button" value="Cancel" ng-click="cancel()" class="btn btn-primary" /> -->
