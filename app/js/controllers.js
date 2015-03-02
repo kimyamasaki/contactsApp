@@ -381,8 +381,12 @@ module.controller('ContactController', function ($scope, ContactService) {
         $('header').fadeIn().css({'top':0 +'px'});
         $('#main').css({'position':'fixed','top':110 +'px','height':530 +'px'});
 
-
         $('#addButton').fadeIn();
+
+        $('h1').fadeIn('fast');
+        $('#searchClear').fadeOut('fast');
+        $('#searchButton').fadeIn('fast');
+        $('#xButton').fadeOut('fast');
     }
 
     $scope.saveContact = function () {
@@ -427,6 +431,11 @@ module.controller('ContactController', function ($scope, ContactService) {
         $('header').fadeIn().css({'top':0 +'px'});
         $('#main').css({'position':'fixed','top':110 +'px','height':530 +'px'});
         $('#addButton').fadeIn();
+
+        $('h1').fadeIn('fast');
+        $('#searchClear').fadeOut('fast');
+        $('#searchButton').fadeIn('fast');
+        $('#xButton').fadeOut('fast');
     }
 
 
@@ -436,6 +445,11 @@ module.controller('ContactController', function ($scope, ContactService) {
         if ($scope.newcontact.id == id) $scope.newcontact = {};
 
         $('#main').css({'position':'fixed','height':530 +'px'});
+
+        $('h1').fadeIn('fast');
+        $('#searchClear').fadeOut('fast');
+        $('#searchButton').fadeIn('fast');
+        $('#xButton').fadeOut('fast');
     }
 
 
@@ -454,6 +468,11 @@ module.controller('ContactController', function ($scope, ContactService) {
         $('#info').css({'top':200 +'px'});
 
         $('#main').css({'position':'absolute', 'height':700+'px'});
+
+        $('h1').fadeIn('fast');
+        $('#searchClear').fadeOut('fast');
+        $('#searchButton').fadeIn('fast');
+        $('#xButton').fadeOut('fast');
     }
 
     $scope.details = function (id) {
@@ -484,6 +503,11 @@ module.controller('ContactController', function ($scope, ContactService) {
         $('#name').addClass('titleName');
         $('.nameSub').css({'display':'none'});
         $('#main').css({'position':'fixed','height':530 +'px'});
+
+        $('h1').fadeIn('fast');
+        $('#searchClear').fadeOut('fast');
+        $('#searchButton').fadeIn('fast');
+        $('#xButton').fadeOut('fast');
     }
 
 })
