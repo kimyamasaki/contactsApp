@@ -91,6 +91,10 @@
 
               <img id="photo" ng-src='img/{{ newcontact.bigPhoto }}'/>
 
+              <div ng-show="generalHideShow">
+              <img id="photo" ng-src='./img/contactdetails/portrait_default.png'/>
+              </div>
+
 <!--               <label>Name</label> -->
               <div class="details subheader nameSub">Name</div>
               <input type="text" id="name" name="name" ng-model="newcontact.name" class="titleName" readonly/>

@@ -344,6 +344,8 @@ module.controller('ContactController', function ($scope, ContactService) {
 
 
     $scope.add = function (id) {
+        $scope.generalHideShow = true;
+
         $scope.hideShow = !$scope.hideShow;
         $scope.knobHideShow = !$scope.knobHideShow;
         $scope.contactsHideShow = !$scope.contactsHideShow;
@@ -362,6 +364,7 @@ module.controller('ContactController', function ($scope, ContactService) {
     }
 
     $scope.cancel = function () {
+        $scope.generalHideShow = false;
         $scope.searchNames = "";
         $scope.hideShow = false;
         $scope.contactsHideShow = true;
@@ -376,10 +379,10 @@ module.controller('ContactController', function ($scope, ContactService) {
     }
 
     $scope.saveContact = function () {
-
+        $scope.generalHideShow = false;
         $scope.searchNames = "";
 
-        var a = {photo : "photoR.png"};
+        var a = {photo : "../img/contacticon/c_portrait_default.png", bigPhoto : "../img/contactdetails/portrait_default.png"};
         //console.log(genericPhoto); 
         var b = $scope.newcontact;
         //console.log($scope.newcontact);
