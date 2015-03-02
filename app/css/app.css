@@ -226,6 +226,13 @@ li:active {
     clip: rect(10px, 10px, 10px, 10px);
 }
 
+#searchButton {
+  position: fixed;
+  top: 42px;
+  right:100px;
+  z-index: 5;
+}
+
 
 #addButton {
   position: fixed;

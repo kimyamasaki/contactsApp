@@ -42,6 +42,9 @@
     <div ng-show="contactsHideShow">
       
       <a href ng-click="add(contact.id)" id="addButton"><img src="./img/add_btn.png" /></a>
+
+      <a href ng-click="search()" id="searchButton"> Search!</a>
+
     </div>
     
   </header>
@@ -115,10 +118,13 @@
 
         
         <div ng-show="contactsHideShow">
-          
+          <!-- Search bar -->
+          <div ng-show="searchHideShow">
+          Search: <input id ="searchClear" ng-model="searchNames">
+          </div>
 
           <ul id="people">
-              <li ng-repeat="contact in contacts | orderBy: 'name'" id="contact-{{contact.id}}">
+              <li ng-repeat="contact in contacts | filter:searchNames | orderBy: 'name'" id="contact-{{contact.id}}">
 
                 <div class="subContainer">
                   <div ng-show="{{GetSeparator(contact)}}" class="subheader">

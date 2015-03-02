@@ -336,6 +336,11 @@ module.controller('ContactController', function ($scope, ContactService) {
         return false;
     };
 
+    $scope.search = function(){
+        $scope.searchHideShow = !$scope.searchHideShow;
+
+    }
+
 
 
     $scope.add = function (id) {
