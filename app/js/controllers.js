@@ -354,7 +354,7 @@ module.controller('ContactController', function ($scope, ContactService) {
 
         $('#addButton').fadeOut();
         $('header').css({'top':-120 +'px'});
-        $('#main').css({'top':0 +'px'});
+        $('#main').css({'top':265 +'px'});
         $('#saveButton, #cancelButton').css({'display':'block'});
         $('#name, #phone, #email').removeClass('clearForm');
         $('#name').removeClass('titleName');
