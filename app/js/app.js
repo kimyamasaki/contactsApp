@@ -88,11 +88,11 @@ window.onload = function() {
   /*************** Scrolling ***************/
 
   main.on("panup pandown", function(e) {
-    console.log("panning: " + $('#main').scrollTop());
-    $(".knob").val($('#main').scrollTop());
+    //console.log("panning: " + $('#main').scrollTop()/17);
+    $(".knob").val($('#main').scrollTop()/17);
     $(".knob").trigger("change");
-      // scrollVal = $('#main').scrollTop();
-      // console.log(scrollVal);
+      //scrollVal = $('#main').scrollTop();
+      //console.log(scrollVal);
 
       // var scrollBool = true;
 
@@ -104,23 +104,25 @@ window.onload = function() {
   });
 
   $("#main").scroll(function(){
-    $(".knob").val($('#main').scrollTop());
+    $(".knob").val($('#main').scrollTop()/17);
     $(".knob").trigger("change");
-    //console.log("scrolling");
+    //console.log($('#main').scrollTop());
   });
 
   $(".knob").knob({
       change : function (value) {
           console.log("change : " + value);
-          var increments = (maxScroll / 70) * (value);
+          var increments = (maxScroll / 100) * (value);
           $('#main').scrollTop = increments;
+
+           //console.log(increments);
+          $('#main').scrollTop(increments);
+
 
           if (value == 100) {
             $(".gradient").fadeOut('fast');
           }
-          // console.log(increments);
-          // $('#main').scrollTop(increments);
-
+          
           // if (value == 100) {
           //   console.log("sdfs");
           // }
