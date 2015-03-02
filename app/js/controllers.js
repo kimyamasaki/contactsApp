@@ -320,6 +320,7 @@ module.service('ContactService', function () {
 module.controller('ContactController', function ($scope, ContactService) {
     $scope.hideShow = false;
     $scope.contactsHideShow = true;
+    $scope.knobHideShow = true;
     // $scope.hs = false;
     $scope.contacts = ContactService.list();
 
@@ -339,6 +340,7 @@ module.controller('ContactController', function ($scope, ContactService) {
 
     $scope.add = function (id) {
         $scope.hideShow = !$scope.hideShow;
+        $scope.knobHideShow = !$scope.knobHideShow;
         $scope.contactsHideShow = !$scope.contactsHideShow;
         document.getElementById("name").readOnly = false;
         document.getElementById("email").readOnly = false;
@@ -357,6 +359,7 @@ module.controller('ContactController', function ($scope, ContactService) {
     $scope.cancel = function () {
         $scope.hideShow = false;
         $scope.contactsHideShow = true;
+        $scope.knobHideShow = true;
         $scope.newcontact = {};
 
         $('header').css({'top':0 +'px'});
@@ -406,6 +409,7 @@ module.controller('ContactController', function ($scope, ContactService) {
 
         $scope.hideShow = false;
         $scope.contactsHideShow = true;
+        $scope.knobHideShow = true;
 
 
         $('header').css({'top':0 +'px'});
@@ -444,6 +448,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.hideShow = true;
         $scope.contactsHideShow = false; 
         $scope.editHideShow = true;
+        $scope.knobHideShow = false;
 
         $('header').css({'top':-120 +'px'});
         // $('header').css('background-image','transparent');
