@@ -324,6 +324,8 @@ module.controller('ContactController', function ($scope, ContactService) {
     // $scope.hs = false;
     $scope.contacts = ContactService.list();
 
+    // $scope.defaultSearch = "Search";
+
 
     var alphabet = null;
     
@@ -338,7 +340,7 @@ module.controller('ContactController', function ($scope, ContactService) {
 
     $scope.search = function(){
         $scope.searchHideShow = !$scope.searchHideShow;
-
+        $scope.searchNames = "";
     }
 
     $scope.add = function (id) {
@@ -353,7 +355,6 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.editHideShow = false;
         $scope.toggleHideShow = false;
         $scope.saveHideShow = true;
-
 
         $('header').fadeOut().css({'top':-120 +'px'});
         $('#main').css({'top':0 +'px','position':'absolute', 'height':700+'px'});

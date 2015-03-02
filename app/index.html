@@ -45,6 +45,16 @@
 
       <a href ng-click="search()" id="searchButton"><img src="./img/search.png" /></a>
 
+      <a href ng-click="search()" id="xButton"><img src="./img/x.png" /></a>
+
+      <!-- <div ng-show="contactsHideShow"> -->
+        <div ng-show="searchHideShow">
+          <form id="searchform">
+            <input id ="searchClear" ng-model="searchNames" >
+          </form>
+        </div>
+      <!-- </div> -->
+
     </div>
     
   </header>
@@ -117,7 +127,7 @@
                   <!-- <a href="javascript:void(0)" ng-click="saveContact()" id="saveButton" disabled>Save</a> -->
 
                   <div ng-show="saveHideShow">
-                    <input type="submit" href="javascript:void(0)" ng-click="saveContact()" id="saveButton" disabled>Save</a>
+                    <input type="submit" href="javascript:void(0)" ng-click="saveContact()" id="saveButton" disabled></a>
                   </div>
 
                   <a href="javascript:void(0)" ng-click="cancel()" id="cancelButton">Cancel</a>
@@ -132,9 +142,9 @@
         
         <div ng-show="contactsHideShow">
           <!-- Search bar -->
-          <div ng-show="searchHideShow">
-          Search: <input id ="searchClear" ng-model="searchNames">
-          </div>
+          <!-- <div ng-show="searchHideShow"> -->
+          
+          <!-- </div> -->
 
           <ul id="people">
               <li ng-repeat="contact in contacts | filter:searchNames | orderBy: 'name'" id="contact-{{contact.id}}">

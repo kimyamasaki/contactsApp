@@ -15,6 +15,8 @@ window.onload = function() {
   var actionEdit = new Hammer(document.getElementById("actionEdit"));
   var overlay = new Hammer(document.getElementById("overlay"));
   var scrollknob = new Hammer(document.getElementById("scrollknob"));
+  var searchButton = new Hammer(document.getElementById("searchButton"));
+  var xButton = new Hammer(document.getElementById("xButton"));
 
   var scrollVal = 0;
   var mainHeight = $('#main').height();
@@ -50,8 +52,8 @@ window.onload = function() {
     
     $("#actionToggle").fadeIn('fast').css({'top': yPos-60, 'left': xPos-60});
     $("#actionPhone").fadeIn('fast').css({'top': yPos-28, 'left': xPos-90});
-    $("#actionText").fadeIn('fast').css({'top': yPos-28, 'left': xPos+35});
-    $("#actionEdit").fadeIn('fast').css({'top': yPos-95, 'left': xPos-25});
+    $("#actionText").fadeIn('fast').css({'top': yPos-95, 'left': xPos-25});
+    $("#actionEdit").fadeIn('fast').css({'top': yPos-28, 'left': xPos+35});
     $("#overlay").fadeIn('fast');
   });
 
@@ -118,6 +120,7 @@ window.onload = function() {
   });
 
 
+  /**************** Disable save button if new contact is empty ****************/
 
   $(':text').keyup(function() {
     if($('#name').val() != "" && $('#phone').val() != "" && $('#email').val() != "") {
@@ -125,5 +128,24 @@ window.onload = function() {
     } else {
        $('#saveButton').attr('disabled', true);   
     }
+  });
+
+
+  /**************** Disable save button if new contact is empty ****************/
+
+  searchButton.on("tap", function(e) {
+    console.log("empty");
+    $('h1').fadeOut('fast');
+    $('#searchClear').fadeIn('fast');
+    $('#searchButton').fadeOut('fast');
+    $('#xButton').fadeIn('fast');
+  });
+
+
+  xButton.on("tap", function(e) {
+    $('h1').fadeIn('fast');
+    $('#searchClear').fadeOut('fast');
+    $('#searchButton').fadeIn('fast');
+    $('#xButton').fadeOut('fast');
   });
 };
