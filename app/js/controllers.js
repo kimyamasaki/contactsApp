@@ -446,14 +446,23 @@ module.controller('ContactController', function ($scope, ContactService) {
     $scope.delete = function (id) {
 
         ContactService.delete(id);
+        console.log(id);
         if ($scope.newcontact.id == id) $scope.newcontact = {};
 
-        $('#main').css({'position':'fixed','height':530 +'px'});
+        $scope.hideShow = false;
+        $scope.contactsHideShow = true;
+        $scope.knobHideShow = true;
+        $scope.saveHideShow = true;
+
+        $('header').fadeIn().css({'top':0 +'px'});
+        $('#main').css({'position':'fixed','top':110 +'px','height':530 +'px'});
+        $('#addButton').fadeIn();
 
         $('h1').fadeIn('fast');
         $('#searchClear').fadeOut('fast');
         $('#searchButton').fadeIn('fast');
         $('#xButton').fadeOut('fast');
+
     }
 
 

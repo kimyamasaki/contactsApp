@@ -346,16 +346,16 @@ a:hover, a:active {
   transition: all 200ms ease;
 }
 
-#info input {
+input {
   padding: 8px 30px 8px 14px;
   border-radius: 10px;
   border: 1px solid #ddd;
   background: transparent;
-  min-width: 75%;
+  /*min-width: 75%;*/
 
 }
 
-#info input:active {
+input:active {
   padding: 8px 0 8px 14px;
   border-radius: 10px;
   border: 1px solid #40c9c5;
@@ -364,7 +364,6 @@ a:hover, a:active {
   -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-
 }
 
 .clearForm {
