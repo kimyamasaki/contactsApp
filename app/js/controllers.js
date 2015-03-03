@@ -421,7 +421,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         //console.log(a);
         $scope.newcontact = a;
         console.log($scope.newcontact);
-        // $scope.GetSeparator = true;
+        $scope.GetSeparator = true;
       
         ContactService.save($scope.newcontact);
 
