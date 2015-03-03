@@ -339,7 +339,8 @@ module.controller('ContactController', function ($scope, ContactService) {
     };
 
     $scope.search = function(){
-        $scope.searchHideShow = !$scope.searchHideShow;
+        // $scope.searchHideShow = !$scope.searchHideShow;
+        $scope.searchHideShow = true;
         $scope.searchNames = "";
     }
 
@@ -354,6 +355,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         document.getElementById("phone").readOnly = false;
         $scope.editHideShow = false;
         $scope.toggleHideShow = false;
+        $scope.searchHideShow = false;
         $scope.saveHideShow = true;
 
         $('header').fadeOut().css({'top':-120 +'px'});
@@ -376,6 +378,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.contactsHideShow = true;
         $scope.knobHideShow = true;
         $scope.toggleHideShow = true;
+        $scope.searchHideShow = false;
         $scope.newcontact = {};
         
         $('header').fadeIn().css({'top':0 +'px'});
@@ -392,6 +395,7 @@ module.controller('ContactController', function ($scope, ContactService) {
     $scope.saveContact = function () {
         $scope.generalHideShow = false;
         $scope.searchNames = "";
+        $scope.searchHideShow = false;
 
         var a = {photo : "../img/contacticon/c_portrait_default.png", bigPhoto : "../img/contactdetails/portrait_default.png"};
         //console.log(genericPhoto); 
@@ -458,6 +462,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         document.getElementById("email").readOnly = false;
         document.getElementById("phone").readOnly = false;
         $scope.saveHideShow = true;
+        $scope.searchHideShow = false;
 
         $('#editButton').fadeOut();
 
@@ -488,6 +493,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.knobHideShow = false;
         $scope.toggleHideShow = false;
         $scope.saveHideShow = false;
+        $scope.searchHideShow = false;
 
         $('header').fadeOut().css({'top':-120 +'px'});
         $('#main').css({'top':0 +'px'});

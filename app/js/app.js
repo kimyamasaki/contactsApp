@@ -141,6 +141,14 @@ window.onload = function() {
     $('#xButton').fadeIn('fast');
   });
 
+  // $('h1').on("tap", function(e) {
+  //   console.log("empty");
+  //   $('h1').fadeOut('fast');
+  //   $('#searchClear').fadeIn('fast');
+  //   $('#searchButton').fadeOut('fast');
+  //   $('#xButton').fadeIn('fast');
+  // });
+
 
   xButton.on("tap", function(e) {
     $('h1').fadeIn('fast');
