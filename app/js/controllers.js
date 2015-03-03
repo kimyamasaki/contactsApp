@@ -357,6 +357,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.toggleHideShow = false;
         $scope.searchHideShow = false;
         $scope.saveHideShow = true;
+        $scope.deleteHideShow = false;
 
         $('header').fadeOut().css({'top':-120 +'px'});
         $('#main').css({'top':0 +'px','position':'absolute', 'height':700+'px'});
@@ -431,6 +432,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.contactsHideShow = true;
         $scope.knobHideShow = true;
         $scope.saveHideShow = true;
+        $scope.deleteHideShow = true;
 
         $('header').fadeIn().css({'top':0 +'px'});
         $('#main').css({'position':'fixed','top':110 +'px','height':530 +'px'});
@@ -453,6 +455,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.contactsHideShow = true;
         $scope.knobHideShow = true;
         $scope.saveHideShow = true;
+        $scope.deleteHideShow = true;
 
         $('header').fadeIn().css({'top':0 +'px'});
         $('#main').css({'position':'fixed','top':110 +'px','height':530 +'px'});
@@ -471,10 +474,11 @@ module.controller('ContactController', function ($scope, ContactService) {
         document.getElementById("email").readOnly = false;
         document.getElementById("phone").readOnly = false;
         $scope.saveHideShow = true;
+        $scope.deleteHideShow = true;
         $scope.searchHideShow = false;
 
         $('#editButton').fadeOut();
-
+        
         $('#saveButton, #cancelButton').css({'display':'block'});
         $('#name, #phone, #email').removeClass('clearForm');
         $('#name').removeClass('titleName');
@@ -502,6 +506,7 @@ module.controller('ContactController', function ($scope, ContactService) {
         $scope.knobHideShow = false;
         $scope.toggleHideShow = false;
         $scope.saveHideShow = false;
+        $scope.deleteHideShow = false;
         $scope.searchHideShow = false;
 
         $('header').fadeOut().css({'top':-120 +'px'});

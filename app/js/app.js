@@ -17,6 +17,7 @@ window.onload = function() {
   var scrollknob = new Hammer(document.getElementById("scrollknob"));
   var searchButton = new Hammer(document.getElementById("searchButton"));
   var xButton = new Hammer(document.getElementById("xButton"));
+  var editButton = new Hammer(document.getElementById("editButton"));
 
   var scrollVal = 0;
   var mainHeight = $('#main').height();
@@ -122,16 +123,34 @@ window.onload = function() {
 
   /**************** Disable save button if new contact is empty ****************/
 
-  $(':text').keyup(function() {
-    if($('#name').val() != "" && $('#phone').val() != "" && $('#email').val() != "") {
-       $('#saveButton').removeAttr('disabled');
-    } else {
-       $('#saveButton').attr('disabled', true);   
-    }
-  });
+  // $(':text').keyup(function() {
+  // editButton.on("tap", function(e) {
+  //   if($('#name').val() == "") {
+  //      $('#saveButton').attr('disabled', true);
+  //   } else {
+  //      $('#saveButton').removeAttr('disabled');   
+  //   }
+  //   });
+  // });
+
+  // it('should toggle button', function() {
+  //   expect(element(by.css('button')).getAttribute('disabled')).toBeFalsy();
+  //   // element(by.model('checked')).click();
+  //   ($('#name').val() != "" && $('#phone').val() != "" && $('#email').val() != "")
+  //   expect(element(by.css('button')).getAttribute('disabled')).toBeTruthy();
+  // });
 
 
-  /**************** Disable save button if new contact is empty ****************/
+  if ($("#saveButton").is(":disabled")) {
+    console.log('disabled');
+    $("#saveButton").css("background","url('./img/save_btn_disabled.png')");
+  } else {
+    $("#saveButton").css("background","url('./img/save_btn.png')");
+    console.log('enabled');
+  }
+
+
+  /**************** Search bar ****************/
 
   searchButton.on("tap", function(e) {
     $('h1').fadeOut('fast');

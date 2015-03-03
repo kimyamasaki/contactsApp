@@ -9,10 +9,6 @@
   <link rel="stylesheet" href="css/animations.css">
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
 
-
-
-
-
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -26,44 +22,33 @@
   <script src="bower_components/jQuery-Knob-master/dist/jquery.knob.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
+</head>
 
-  
-  </head>
-<body oncontextmenu="return false">
+<body>
 
-<div ng-app="contactsApp" ng-controller="ContactController">
+  <div ng-app="contactsApp" ng-controller="ContactController">
+    <header>
+      <h1>All Contacts</h1>
+      <div ng-show="contactsHideShow">
+        
+        <a href ng-click="add(contact.id)" id="addButton"><img src="./img/add_btn.png" /></a>
 
+        <a href ng-click="search()" id="searchButton"><img src="./img/search.png" /></a>
 
+        <a href ng-click="search()" id="xButton"><img src="./img/x.png" /></a>
 
-
-  <header>
-    <!-- <img src="./img/hamburger.png" class="hamburger" /> -->
-    <h1>All Contacts</h1>
-    <div ng-show="contactsHideShow">
-      
-      <a href ng-click="add(contact.id)" id="addButton"><img src="./img/add_btn.png" /></a>
-
-      <a href ng-click="search()" id="searchButton"><img src="./img/search.png" /></a>
-
-      <a href ng-click="search()" id="xButton"><img src="./img/x.png" /></a>
-
-      <!-- <div ng-show="contactsHideShow"> -->
         <div ng-show="searchHideShow">
           <form id="searchform">
             <input id ="searchClear" ng-model="searchNames" >
           </form>
         </div>
-      <!-- </div> -->
-
-    </div>
-    
-  </header>
+      </div>   
+    </header>
 
 
-  <div ng-show="knobHideShow">
-  <div class="knobBG">
-      <!-- <input type="text" id="scrollknob" class="knob" data-width="100" data-cursor=true value="0"> -->
-      <input id="scrollknob" class="knob" 
+    <div ng-show="knobHideShow">
+      <div class="knobBG">
+        <input id="scrollknob" class="knob" 
           data-angleOffset="-95" 
           data-angleArc="90" 
           data-fgColor="#40c9c5" 
@@ -76,107 +61,92 @@
           data-displayInput="false"
           data-cursor="true"
           >
-  </div>
-  </div>
-
-  <!-- <div class="gradient"></div> -->
-
-  <div id="actionToggle"></div>
-  <div id="actionPhone" class="actionItems"><img src="./img/call_btn.png" /></div>
-  <div id="actionText" class="actionItems"><img src="./img/text_btn.png" /></div>
-  <div id="actionEdit" class="actionItems"><img src="./img/edit2_btn.png" /></div>
-
-  <div id="container">      
-    <div id="main">
-      <div ng-show="hideShow">
-
-          <!-- <form class="well"> -->
-              <div ng-show="hideShow">
-                <div ng-show="editHideShow">
-                  <a href="javascript:void(0)" value="Cancel" ng-click="cancel()" id="backButton" /><img src="./img/back_btn.png" /></a>
-                  <a href="javascript:void(0)" ng-click="edit(contact.id)" id="editButton"><img src="./img/edit_btn.png" /></a>
-                </div>
-              </div>
-              <!-- <img ng-src='img/bigc1.png' class="bigPic" /> -->
-
-              <img id="photo" ng-src='img/{{ newcontact.bigPhoto }}'/>
-
-              <div ng-show="generalHideShow">
-
-              <a href="javascript:void(0)" value="Cancel" ng-click="cancel()" id="backButton" /><img src="./img/back_btn.png" /></a>
-
-              <img id="photo" ng-src='./img/contactdetails/portrait_default.png'/>
-              </div>
-
-              <form id="info">
-<!--               <label>Name</label> -->
-                  <div class="details subheader nameSub">Name</div>
-                  <input type="text" id="name" name="name" ng-model="newcontact.name" class="titleName" readonly/>
-                  
-                  <!-- <label>Phone</label> -->
-                  <div class="details subheader">Phone</div>
-                  <input type="text" id="phone" name="phone" ng-model="newcontact.phone" />
-
-                  <!-- <label>Email</label> -->
-                  <div class="details subheader">Email</div>
-                  <input type="text" id="email" name="email" ng-model="newcontact.email" />
-
-                  <br/>
-                  <input type="hidden" ng-model="newcontact.id" />
-                  
-                  <!-- <a href="javascript:void(0)" ng-click="saveContact()" id="saveButton" disabled>Save</a> -->
-
-                  <div ng-show="saveHideShow">
-                    <input type="submit" href="javascript:void(0)" ng-click="saveContact()" id="saveButton" disabled></a>
-
-                    <a href="javascript:void(0)" ng-click="delete(newcontact.id)" id="deleteButton">delete</a>
-                  </div>
-
-                  <!-- <a href="javascript:void(0)" ng-click="cancel()" id="cancelButton">Cancel</a> -->
-
-
-              </form>
-
-
-              <!-- <input type="button" value="Cancel" ng-click="cancel()" class="btn btn-primary" /> -->
-
-          <!-- </form> -->
-        </div>
-
-        
-        <div ng-show="contactsHideShow">
-          <!-- Search bar -->
-          <!-- <div ng-show="searchHideShow"> -->
-          
-          <!-- </div> -->
-
-          <ul id="people">
-              <li ng-repeat="contact in contacts | filter:searchNames | orderBy: 'name'" id="contact-{{contact.id}}">
-
-                <div class="subContainer">
-                  <div ng-show="{{GetSeparator(contact)}}" class="subheader">
-                  {{contact.alphabet}}
-                  </div>
-                </div>
-
-
-                <a href="javascript:void(0)" ng-click="details(contact.id)" >
-                <div class="contactName"><img ng-src='img/{{ contact.photo }}' />{{ contact.name }}</div>
-              
-                <!-- <td> <a href="javascript:void(0)" ng-click="edit(contact.id)" >edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a> --></a>
-                <div class="divider"></div>
-              </li>
-          </ul>
-        </div>
       </div>
-        
+
+      <div id="actionToggle"></div>
+      <div id="actionPhone" class="actionItems"><img src="./img/call_btn.png" /></div>
+      <div id="actionText" class="actionItems"><img src="./img/text_btn.png" /></div>
+      <div id="actionEdit" class="actionItems"><img src="./img/edit2_btn.png" /></div>
     </div>
+
+    <div id="container">      
+      <div id="main">
+        <div ng-show="hideShow">
+
+          <div ng-show="hideShow">
+            <div ng-show="editHideShow">
+              <a href="javascript:void(0)" value="Cancel" ng-click="cancel()" id="backButton" /><img src="./img/back_btn.png" /></a>
+              <a href="javascript:void(0)" ng-click="edit(contact.id)" id="editButton"><img src="./img/edit_btn.png" /></a>
+            </div>
+          </div>
+
+          <img id="photo" ng-src='img/{{ newcontact.bigPhoto }}'/>
+
+          <div ng-show="generalHideShow">
+
+          <a href="javascript:void(0)" value="Cancel" ng-click="cancel()" id="backButton" /><img src="./img/back_btn.png" /></a>
+
+          <img id="photo" ng-src='./img/contactdetails/portrait_default.png'/>
+          </div>
+
+            <form name="contactInfo" novalidate>
+              <div id="info">
+                <div class="details subheader nameSub">Name</div>
+                <input type="text" id="name" name="name" ng-model="newcontact.name" class="titleName" required/>
+
+                <div class="details subheader">Phone</div>
+                <input type="text" id="phone" name="phone" ng-model="newcontact.phone" />
+
+                <div class="details subheader">Email</div>
+                <input type="text" id="email" name="email" ng-model="newcontact.email" />
+
+                <br/>
+                <input type="hidden" ng-model="newcontact.id" />
+
+
+                <div ng-show="saveHideShow">
+
+                  <span ng-show="contactInfo.name.$error.required">
+                    <button style="background:url('./img/save_btn_disabled.png')" ng-click="saveContact()" id="saveButton" ng-disabled="contactInfo.$invalid"></button></span>
+                  
+                  <span ng-show="!contactInfo.name.$error.required">
+                    <button style="background:url('./img/save_btn.png')" ng-click="saveContact()" id="saveButton"></button>
+                  </span>
+
+                  <div ng-show="deleteHideShow">
+                    <button ng-click="delete(newcontact.id)" id="deleteButton">Delete Contact</button>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          
+          <div ng-show="contactsHideShow">
+
+            <ul id="people">
+                <li ng-repeat="contact in contacts | filter:searchNames | orderBy: 'name'" id="contact-{{contact.id}}">
+
+                  <div class="subContainer">
+                    <div ng-show="{{GetSeparator(contact)}}" class="subheader">
+                    {{contact.alphabet}}
+                    </div>
+                  </div>
+
+                  <a href="javascript:void(0)" ng-click="details(contact.id)" >
+                  <div class="contactName"><img ng-src='img/{{ contact.photo }}' />{{ contact.name }}</div></a>
+
+                  <div class="divider"></div>
+                </li>
+            </ul>
+          </div>
+        </div>      
+      </div>
+    </div>
+
+    <div id="overlay"></div>
+
   </div>
-  <div id="overlay"></div>
-</div>
-
-
-  
-
 </body>
 </html>
